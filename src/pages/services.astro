@@ -1,0 +1,231 @@
+---
+// src/pages/services.astro
+import Layout from '../layouts/Layout.astro';
+
+const coreServices = [
+  {
+    id: 'service-0',
+    num: '01',
+    badge: 'Moteur Métier & Calculs',
+    title: 'Applications Web & Plateformes Sur-Mesure',
+    subtitle: 'La puissance de Next.js & Supabase',
+    description: 'Conception d’outils web complexes capables d’absorber des logiques métiers avancées (algorithmes de calcul, workflows complexes, bases de données relationnelles). Vos utilisateurs bénéficient d’une interface réactive sans aucun ralentissement.',
+    points: ['Architecture Next.js (App Router / SSR)', 'Bases de données Supabase / PostgreSQL', 'Calculs métiers haute précision & tableaux de bord', 'Gestion d’états complexes & authentification'],
+    techs: ['Next.js', 'Supabase', 'TypeScript', 'Tailwind']
+  },
+  {
+    id: 'service-1',
+    num: '02',
+    badge: 'Flux Bi-directionnel',
+    title: 'Systèmes & Interactions Temps Réel',
+    subtitle: 'WebSockets avec Socket.io & MongoDB',
+    description: 'Création d’écosystèmes temps réel où la donnée circule instantanément entre tous les utilisateurs connectés. Idéal pour la collaboration live, la messagerie, la synchronisation d’état et les notifications sans rafraîchissement.',
+    points: ['Connexions persistantes WebSockets', 'Serveurs Node.js / Express haute disponibilité', 'Stockage de flux & documents MongoDB', 'Architecture événementielle (Event-Driven)'],
+    techs: ['Socket.io', 'Node.js', 'MongoDB', 'Render']
+  },
+  {
+    id: 'service-2',
+    num: '03',
+    badge: 'Vélocité & Vitrine Premium',
+    title: 'Sites & Hubs Ultra-Fast / SEO',
+    subtitle: 'Performance extrême sous Astro',
+    description: 'Développement de landing pages et sites vitrines compilés en HTML/CSS pur. Un score Lighthouse irréprochable pour captiver vos clients et dominer le référencement naturel avec un temps de chargement inférieur à la demi-seconde.',
+    points: ['Architecture Zero-JS client par défaut', 'Chargement instantané (< 0.5s LCP)', 'SEO technique natif & métadonnées riches', 'Hébergement Edge Cloudflare mondial'],
+    techs: ['Astro', 'Tailwind CSS', 'Cloudflare Pages']
+  }
+];
+---
+
+<Layout title="Expertise & Solutions Fullstack">
+
+  <div class="relative w-full min-h-[450vh]" id="scroll-container">
+    
+    <!-- CONTENEUR DU TITRE (Reste toujours à z-40, sans aucun fond parasite !) -->
+    <div 
+      id="hero-box" 
+      class="fixed left-1/2 w-full max-w-6xl px-6 z-40 text-center flex flex-col items-center pointer-events-none transition-all duration-700 ease-out origin-top"
+      style="top: 100px; transform: translate(-50%, calc(35vh - 100px)) scale(1);"
+    >
+      <div id="hero-badge" class="transition-opacity duration-500 mb-6">
+        <span class="inline-block text-xs font-mono uppercase tracking-widest px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          Ingénierie & Valeur Ajoutée
+        </span>
+      </div>
+
+      <!-- TITRE : Forcé sur 2 lignes, l'échelle (scale) s'occupera de la taille finale -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] w-full" id="hero-title">
+        Transformez vos besoins complexes en <br/>
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Webapps d'Exception.</span>
+      </h1>
+
+      <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto font-normal leading-relaxed mt-6 transition-opacity duration-500" id="hero-subtitle">
+        Du calcul métier distribué à la synchronisation temps réel, je conçois des architectures sur-mesure taillées pour la scalabilité et l'expérience utilisateur ultime.
+      </p>
+
+      <div class="pt-8 animate-bounce transition-opacity duration-500" id="hero-scroll-hint">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500">Défiler pour explorer</span>
+      </div>
+    </div>
+
+    <!-- ZONE DES CARTES (z-30) : Placée sous le titre en position finale -->
+    <div class="fixed top-[26vh] md:top-[30vh] left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-30 pointer-events-none">
+      {coreServices.map((service) => (
+        <div 
+          id={service.id}
+          class="service-card absolute left-0 right-0 mx-6 bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl transition-all duration-700 ease-out opacity-0 translate-y-16 pointer-events-none"
+        >
+          <!-- Filigrane Numéro -->
+          <div class="absolute -right-4 -bottom-8 text-9xl font-extrabold text-slate-800/30 select-none font-mono pointer-events-none">
+            {service.num}
+          </div>
+
+          <div class="flex flex-col lg:flex-row gap-8 justify-between items-start relative z-10">
+            
+            <div class="space-y-5 max-w-2xl">
+              <div class="space-y-1.5">
+                <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">{service.badge}</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-100">{service.title}</h2>
+                <p class="text-xs font-mono text-slate-400">{service.subtitle}</p>
+              </div>
+
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed">{service.description}</p>
+
+              <ul class="space-y-2.5 pt-2">
+                {service.points.map((point) => (
+                  <li class="flex items-center gap-3 text-xs md:text-sm text-slate-300 font-medium">
+                    <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="w-full lg:w-auto flex flex-col justify-between items-start lg:items-end gap-6 h-full">
+              <div class="flex flex-wrap lg:justify-end gap-2">
+                {service.techs.map((tech) => (
+                  <span class="text-xs font-mono px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-slate-300">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <a href="#contact-section" class="btn-cyber-secondary w-full lg:w-auto pointer-events-auto">
+                <span>Étudier ce besoin</span>
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- SECTION CONTACT FINALE -->
+  <section id="contact-section" class="relative z-50 pt-36 pb-20 px-6 overflow-hidden border-t border-slate-900 bg-slate-950">
+    <div class="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+      <div class="space-y-4">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Prêt pour le niveau supérieur ?</span>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight">Un projet d'envergure en vue ?</h2>
+        <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal">
+          Parlons de votre architecture, de vos contraintes techniques et de vos objectifs métiers.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+        <a href="mailto:contact@neuralcraft.fr" class="btn-cyber-primary w-full sm:w-auto">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          <span>Concevoir votre Webapp</span>
+        </a>
+
+        <a href="/projets" class="btn-cyber-secondary w-full sm:w-auto">
+          <span>Voir Paneum & Lupycha</span>
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPT PROPRE ET FIABLE -->
+  <script>
+    function initCleanServicesScroll() {
+      const heroBox = document.getElementById('hero-box');
+      const heroBadge = document.getElementById('hero-badge');
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      const heroScrollHint = document.getElementById('hero-scroll-hint');
+
+      const cards = [
+        document.getElementById('service-0'),
+        document.getElementById('service-1'),
+        document.getElementById('service-2')
+      ];
+
+      function onScroll() {
+        const scrollY = window.scrollY;
+        const vh = window.innerHeight;
+
+        // 1. GESTION DU TITRE : Toggle via CSS Transform (Garantit 2 lignes et place fixe à 100px)
+        if (scrollY > 50) {
+          if (heroBox) heroBox.style.transform = 'translate(-50%, 0) scale(0.65)';
+          if (heroBadge) heroBadge.style.opacity = '0';
+          if (heroSubtitle) heroSubtitle.style.opacity = '0';
+          if (heroScrollHint) heroScrollHint.style.opacity = '0';
+        } else {
+          // Centrage initial calculé
+          if (heroBox) heroBox.style.transform = 'translate(-50%, calc(35vh - 100px)) scale(1)';
+          if (heroBadge) heroBadge.style.opacity = '1';
+          if (heroSubtitle) heroSubtitle.style.opacity = '1';
+          if (heroScrollHint) heroScrollHint.style.opacity = '1';
+        }
+
+        // 2. APPARITION DES CARTES
+        const step1 = vh * 0.4;
+        const step2 = vh * 1.4;
+        const step3 = vh * 2.4;
+
+        cards.forEach((card) => {
+          if (card) {
+            card.classList.add('opacity-0', 'translate-y-16');
+            card.classList.remove('opacity-100', 'translate-y-0');
+            // Gère les clics uniquement sur la carte active
+            card.style.pointerEvents = 'none'; 
+          }
+        });
+
+        if (scrollY >= step3) {
+          showCard(cards[2]);
+        } else if (scrollY >= step2) {
+          showCard(cards[1]);
+        } else if (scrollY >= step1) {
+          showCard(cards[0]);
+        }
+      }
+
+      function showCard(card: HTMLElement | null) {
+        if (card) {
+          card.classList.remove('opacity-0', 'translate-y-16');
+          card.classList.add('opacity-100', 'translate-y-0');
+          card.style.pointerEvents = 'auto';
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // Force l'état initial
+    }
+
+    initCleanServicesScroll();
+    document.addEventListener('astro:after-swap', initCleanServicesScroll);
+  </script>
+
+</Layout>

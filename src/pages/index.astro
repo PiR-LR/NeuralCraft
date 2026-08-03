@@ -1,0 +1,158 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+
+const techStack = [
+  {
+    name: 'Next.js',
+    desc: 'Webapps complexes & SSR réactif',
+    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.373 24 0 18.627 0 12S5.373 0 12 0c5.472 0 10.075 3.666 11.5 8.708l-9.43 12.204-1.397-1.82 8.992-11.64h-2.126L8.47 21.908c1.082.453 2.26.692 3.53.692 2.373 0 4.568-.788 6.33-2.122l.335.5zm1.88-14.73C19.79 3.09 16.19 0 12 0v24c1.868 0 3.636-.426 5.216-1.188L9.088 12.48v8.636H6.965V8.506h2.123l8.762 11.332C20.306 17.75 22 15.074 22 12c0-1.673-.505-3.23-1.455-4.752z"/></svg>`
+  },
+  {
+    name: 'Socket.io',
+    desc: 'Flux bidirectionnel Temps Réel',
+    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.006 4.318a7.682 7.682 0 0 1 7.676 7.682 7.682 7.682 0 0 1-7.676 7.682 7.682 7.682 0 0 1-7.682-7.682A7.682 7.682 0 0 1 12.006 4.318zm-1.815 3.424v4.456l-2.618-2.618-1.077 1.077 4.456 4.456 4.456-4.456-1.077-1.077-2.618 2.618V7.742h-1.522z"/></svg>`
+  },
+  {
+    name: 'Supabase / Mongo',
+    desc: 'Données relationnelles & NoSQL',
+    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`
+  },
+  {
+    name: 'Astro & Tailwind',
+    desc: 'Vitesse éclair & SSG de précision',
+    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 2.2c-.4-.5-1.1-.5-1.5 0L7.5 8.9c-.3.4-.4.9-.3 1.4l1.8 7.3c.2.7.9 1.2 1.6 1.1h2.8c.7.1 1.4-.4 1.6-1.1l1.8-7.3c.1-.5 0-1-.3-1.4L14.2 2.2zm-2.2 13.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/></svg>`
+  }
+];
+
+const highlights = [
+  { label: 'Réactivité', value: 'WebSockets', sub: 'Event-Driven Sync' },
+  { label: 'Architectures', value: 'Fullstack', sub: 'Next.js & Supabase' },
+  { label: 'Précision', value: 'Haute Voltige', sub: 'Outils & Webapps Métier' }
+];
+---
+
+<Layout title="Architectures Web Antigravité">
+  
+  <!-- SLIDE 1 : HERO LOGO INTERACTIF -->
+  <section class="min-h-screen w-full flex flex-col items-center justify-center relative bg-slate-950 px-6">
+    
+    <button id="logo-trigger" class="py-4 relative group cursor-pointer outline-none border-none bg-transparent" title="Cliquer pour initialiser le noyau">
+      <div class="absolute inset-0 bg-emerald-500/30 blur-3xl rounded-full opacity-60 group-hover:opacity-100 transition-opacity"></div>
+      <Logo id="main-hero-svg" class="w-48 h-48 md:w-72 md:h-72 relative z-10 mx-auto group-hover:scale-105 transition-transform duration-300" />
+    </button>
+
+    <div class="text-center space-y-2 mt-4 z-10">
+      <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">NeuralCraft Engine</h1>
+      <p class="text-slate-500 font-mono text-xs uppercase tracking-widest">Cliquez sur le noyau ou faites défiler</p>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
+      <span class="text-[10px] font-mono uppercase tracking-widest">Faire défiler</span>
+      <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 : LE NOUVEAU POSITIONNEMENT (WEAPPS LOURDES & HAUTE VOLTIGE) -->
+  <section id="antigravity-section" class="min-h-screen w-full flex flex-col items-center justify-center px-6 bg-slate-900/40 border-t border-slate-900 py-20">
+    <div class="space-y-12 max-w-6xl mx-auto text-center scroll-reveal">
+      
+      <div class="space-y-4">
+        <h2 class="text-[11px] font-mono uppercase tracking-widest text-emerald-400">Ingénierie Fullstack & Temps Réel</h2>
+        <h3 class="text-4xl md:text-7xl font-extrabold tracking-tighter leading-none">
+          Webapps Complexe. <br class="hidden md:inline"/>
+          <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+            Zéro Latence.
+          </span>
+        </h3>
+        <p class="text-slate-300 text-sm md:text-xl max-w-3xl mx-auto font-normal leading-relaxed pt-2">
+          De la plateforme métier haute précision au système de communication temps réel, je conçois des applications distribuées (Next.js, Socket.io, Supabase) capables d’absorber la complexité avec la fluidité d'un jeu vidéo.
+        </p>
+      </div>
+
+      <!-- LOGOS STACK TECHNIQUE -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+        {techStack.map((tech) => (
+          <div class="group bg-slate-950/80 border border-slate-800/80 hover:border-emerald-500/50 rounded-2xl p-5 text-left transition-all duration-300 hover:-translate-y-2 shadow-xl">
+            <div class="flex items-center gap-3 text-emerald-400 mb-2 group-hover:scale-110 transition-transform origin-left">
+              <Fragment set:html={tech.svg} />
+              <span class="font-extrabold text-slate-100 text-lg">{tech.name}</span>
+            </div>
+            <p class="text-xs text-slate-400 font-mono leading-tight">{tech.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- CARTES HIGHLIGHTS -->
+      <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/60 max-w-3xl mx-auto">
+        {highlights.map((h) => (
+          <div class="text-center space-y-1">
+            <div class="text-xs font-mono uppercase text-slate-500">{h.label}</div>
+            <div class="text-xl md:text-3xl font-extrabold text-emerald-400 font-mono">{h.value}</div>
+            <div class="text-[10px] text-slate-400 font-mono">{h.sub}</div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SLIDE 3 : CTA BOUTONS CYBER -->
+  <section class="min-h-screen w-full flex flex-col items-center justify-center bg-slate-950 px-6 border-t border-slate-900 relative">
+    <div class="space-y-8 text-center max-w-3xl mx-auto scroll-reveal">
+      <div class="space-y-3">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Lancement de projet</span>
+        <h3 class="text-4xl md:text-6xl font-extrabold tracking-tight">Un projet d'envergure en vue ?</h3>
+        <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto">
+          Bénéficiez d'une ingénierie sur-mesure pour donner vie à vos plateformes les plus ambitieuses.
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+        <a href="/services" class="btn-cyber-primary w-full sm:w-auto">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          <span>Concevoir votre Webapp</span>
+        </a>
+
+        <a href="/projets" class="btn-cyber-secondary w-full sm:w-auto">
+          <span>Voir Paneum & Lupycha</span>
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPT LOGO CLIC -->
+  <script>
+    function setupLogoInteraction() {
+      const triggerBtn = document.getElementById('logo-trigger');
+      const svg = document.getElementById('main-hero-svg');
+      const targetSection = document.getElementById('antigravity-section');
+
+      if (triggerBtn && svg && targetSection) {
+        triggerBtn.addEventListener('click', () => {
+          svg.classList.add('deconstruct');
+
+          setTimeout(() => {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }, 250);
+
+          setTimeout(() => {
+            svg.classList.remove('deconstruct');
+          }, 1200);
+        });
+      }
+    }
+
+    setupLogoInteraction();
+    document.addEventListener('astro:after-swap', setupLogoInteraction);
+  </script>
+
+</Layout>

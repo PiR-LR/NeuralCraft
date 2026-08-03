@@ -1,0 +1,29 @@
+---
+// src/pages/approche.astro
+import Layout from '../layouts/Layout.astro';
+
+const pillars = [
+  { step: '01', title: 'Code Pur', desc: 'Zéro JS client inutile. L’Edge Computing au service de la performance brute.' },
+  { step: '02', title: 'Vitesse Éclair', desc: 'Temps de chargement instantanés. architectures compilées pour la vélocité.' },
+  { step: '03', title: 'Edge Deployment', desc: 'Souveraineté des données et déploiement mondial sur le réseau Cloudflare Pages.' }
+];
+---
+
+<Layout title="Philosophie Zero-Overhead">
+  
+  {pillars.map((item, index) => (
+    <section class={`h-screen w-full flex flex-col items-center justify-center snap-start snap-always px-6 text-center ${index % 2 === 0 ? 'bg-slate-950' : 'bg-slate-900/50'} relative overflow-hidden`}>
+      <!-- Numéro géant en arrière-plan -->
+      <div class="absolute -bottom-20 -right-20 text-[200px] md:text-[500px] font-extrabold font-mono text-emerald-500/5 -z-10 tracking-tighter opacity-70">
+        {item.step}
+      </div>
+
+      <div class="space-y-8 max-w-5xl mx-auto z-10">
+        <h2 class="text-[12px] font-mono uppercase tracking-widest text-emerald-400">Pilier Ingénierie</h2>
+        <h3 class="text-6xl md:text-9xl font-extrabold tracking-tighter leading-none text-slate-100">{item.title}</h3>
+        <p class="text-slate-400 text-lg md:text-3xl max-w-2xl mx-auto font-medium leading-relaxed">{item.desc}</p>
+      </div>
+    </section>
+  ))}
+
+</Layout>
