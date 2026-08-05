@@ -9,7 +9,10 @@ const pillars = [
 ];
 ---
 
-<Layout title="Philosophie Zero-Overhead">
+<Layout
+  title="Philosophie Zero-Overhead"
+  description="Ma philosophie de développement : zéro compromis sur la performance, la lisibilité et l'expérience utilisateur. Code propre, architecture intentionnelle."
+>
   
   {pillars.map((item, index) => (
     <section class={`h-screen w-full flex flex-col items-center justify-center snap-start snap-always px-6 text-center ${index % 2 === 0 ? 'bg-slate-950' : 'bg-slate-900/50'} relative overflow-hidden`}>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neuralcraft.fr/sitemap-index.xml

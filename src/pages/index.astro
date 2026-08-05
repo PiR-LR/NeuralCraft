@@ -3,27 +3,52 @@
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
 
-const techStack = [
+// Logos pour le bandeau défilant
+const marqueeItems = [
   {
     name: 'Next.js',
-    desc: 'Webapps complexes & SSR réactif',
-    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.373 24 0 18.627 0 12S5.373 0 12 0c5.472 0 10.075 3.666 11.5 8.708l-9.43 12.204-1.397-1.82 8.992-11.64h-2.126L8.47 21.908c1.082.453 2.26.692 3.53.692 2.373 0 4.568-.788 6.33-2.122l.335.5zm1.88-14.73C19.79 3.09 16.19 0 12 0v24c1.868 0 3.636-.426 5.216-1.188L9.088 12.48v8.636H6.965V8.506h2.123l8.762 11.332C20.306 17.75 22 15.074 22 12c0-1.673-.505-3.23-1.455-4.752z"/></svg>`
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="Next.js"><path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 0 1-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 0 0-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.534.525.363.04 1.935.04 2.299 0 1.611-.178 2.977-.577 4.323-1.264.207-.106.247-.134.219-.158-.02-.013-.9-1.193-1.955-2.62l-1.919-2.592-2.404-3.558a338.739 338.739 0 0 0-2.422-3.556c-.009-.002-.018 1.579-.023 3.51-.007 3.38-.01 3.515-.052 3.595a.426.426 0 0 1-.206.214c-.075.037-.14.044-.495.044H7.81l-.108-.068a.438.438 0 0 1-.157-.171l-.05-.106.006-4.703.007-4.705.072-.092a.645.645 0 0 1 .174-.143c.096-.047.134-.051.54-.051.478 0 .558.018.682.154.035.038 1.337 1.999 2.895 4.361a10760.433 10760.433 0 0 0 4.735 7.17l1.9 2.879.096-.063a12.317 12.317 0 0 0 2.466-2.163 11.944 11.944 0 0 0 2.824-6.134c.096-.66.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.859-8.292-8.208-9.695a12.597 12.597 0 0 0-2.499-.523A33.119 33.119 0 0 0 11.573 0zm4.069 7.217c.347 0 .408.005.486.047a.473.473 0 0 1 .237.277c.018.06.023 1.365.018 4.304l-.006 4.218-.744-1.14-.746-1.14v-3.066c0-1.982.01-3.097.023-3.15a.478.478 0 0 1 .233-.296c.096-.05.13-.054.5-.054z"/></svg>`
+  },
+  {
+    name: 'Vercel',
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="Vercel"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>`
   },
   {
     name: 'Socket.io',
-    desc: 'Flux bidirectionnel Temps Réel',
-    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.006 4.318a7.682 7.682 0 0 1 7.676 7.682 7.682 7.682 0 0 1-7.676 7.682 7.682 7.682 0 0 1-7.682-7.682A7.682 7.682 0 0 1 12.006 4.318zm-1.815 3.424v4.456l-2.618-2.618-1.077 1.077 4.456 4.456 4.456-4.456-1.077-1.077-2.618 2.618V7.742h-1.522z"/></svg>`
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="Socket.io"><path d="M9.024175 0.632665c3.0406-0.77978675 6.401-0.3253775 9.08255 1.3295675C21.48395 3.981825 23.688675 7.802225 23.744775 11.734825c0.123425 3.971875-1.946675 7.910075-5.2734 10.069925-3.702575 2.490825-8.8245 2.5862-12.605625 0.218775C2.01169 19.72345-0.23791225 15.083975 0.339915 10.62965 0.805545 5.922875 4.440825 1.7714925 9.024175 0.632665Z"/><path fill="#222" d="M8.558675 2.55685c5.744625-2.3001025 12.790775 1.94665 13.385425 8.106425 0.92565 5.54265-3.67455 11.175075-9.290125 11.337775C7.31325 22.534 2.152075 18.00675 2.000605 12.6436 1.602295 8.301475 4.4634 3.993 8.558675 2.55685Z"/><path d="M9.136475 11.403875c2.574975-2.10375 5.093875-4.280425 7.72495-6.32245-1.38005 2.120575-2.799375 4.2131-4.17945 6.333675-1.1837 0.0056-2.3674 0.0056-3.5455-0.011225Z"/><path d="M11.312975 12.576425c1.189325 0 2.373025 0 3.55675 0.016825-2.591825 2.092525-5.099475 4.286025-7.736175 6.32245 1.38005-2.120575 2.799375-4.2187 4.179425-6.339275Z"/></svg>`
   },
   {
-    name: 'Supabase / Mongo',
-    desc: 'Données relationnelles & NoSQL',
-    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`
+    name: 'Supabase',
+    svg: `<svg viewBox="0 0 96 96" fill="none" width="28" height="28" aria-label="Supabase"><path fill="#3ecf8e" d="M55.7223 93.4383c-2.4014 3.0241-7.2705 1.3672-7.3284-2.4942l-.846-56.4773h37.9752c6.8784 0 10.7146 7.9445 6.4375 13.3315l-36.2383 45.64Z"/><path fill="#3ecf8e" d="M40.278 2.56189c2.4014-3.024436 7.2705-1.36726 7.3284 2.49417l.3707 56.47724h-37.5c-6.87853 0-10.714819-7.9446-6.43753-13.3315L40.278 2.56189Z"/></svg>`
   },
   {
-    name: 'Astro & Tailwind',
-    desc: 'Vitesse éclair & SSG de précision',
-    svg: `<svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 2.2c-.4-.5-1.1-.5-1.5 0L7.5 8.9c-.3.4-.4.9-.3 1.4l1.8 7.3c.2.7.9 1.2 1.6 1.1h2.8c.7.1 1.4-.4 1.6-1.1l1.8-7.3c.1-.5 0-1-.3-1.4L14.2 2.2zm-2.2 13.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"/></svg>`
-  }
+    name: 'MongoDB',
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="MongoDB"><path d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218zm-5.336 8.195s0-8.291.275-8.29c.213 0 .49 10.695.49 10.695-.381-.045-.765-1.76-.765-2.405z"/></svg>`
+  },
+  {
+    name: 'Astro',
+    svg: `<svg viewBox="0 0 32 32" width="28" height="28" aria-label="Astro" xmlns="http://www.w3.org/2000/svg"><path d="M5.9,18.847a7.507,7.507,0,0,0-.572,2.624,3.265,3.265,0,0,0,.551,1.553,7.427,7.427,0,0,0,2.093,1.681L13.1,28.119A7.332,7.332,0,0,0,15.2,29.287a3.239,3.239,0,0,0,1.5,0,7.381,7.381,0,0,0,2.117-1.16L24,24.711a7.512,7.512,0,0,0,2.117-1.688,3.241,3.241,0,0,0,.55-1.563,7.515,7.515,0,0,0-.587-2.643L21.547,4.551a3.973,3.973,0,0,0-.54-1.3,1.733,1.733,0,0,0-.7-.51,3.972,3.972,0,0,0-1.4-.122H13.005a3.932,3.932,0,0,0-1.4.125,1.713,1.713,0,0,0-.7.512,3.94,3.94,0,0,0-.535,1.3L5.9,18.848Zm13.24-13.2a3.329,3.329,0,0,1,.441,1.093l3.892,12.784a16.168,16.168,0,0,0-4.653-1.573L16.291,9.391a.331.331,0,0,0-.513-.169.323.323,0,0,0-.119.169l-2.5,8.557a16.14,16.14,0,0,0-4.674,1.579L12.393,6.743a3.281,3.281,0,0,1,.442-1.094,1.458,1.458,0,0,1,.582-.43,3.31,3.31,0,0,1,1.175-.1h2.793a3.314,3.314,0,0,1,1.176.1,1.454,1.454,0,0,1,.583.432ZM16.127,21.06a5.551,5.551,0,0,0,3.4-.923,2.8,2.8,0,0,1-.207,2.182A3.938,3.938,0,0,1,17.773,23.8c-.674.428-1.254.8-1.254,1.787a2.079,2.079,0,0,0,.209.914,2.49,2.49,0,0,1-1.535-2.3v-.061c0-.683,0-1.524-.962-1.524a1.028,1.028,0,0,0-.391.077,1.021,1.021,0,0,0-.552.551,1.03,1.03,0,0,0-.079.391,3.769,3.769,0,0,1-.988-2.644,4.206,4.206,0,0,1,.175-1.248c.4.757,1.92,1.32,3.731,1.32Z" style="fill:#ff5d01;fill-rule:evenodd"/></svg>`
+  },
+  {
+    name: 'Netlify',
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="Netlify"><path d="M6.6004 18.92705h-0.221875l-1.107525-1.107525v-0.221875l1.693125-1.6931h1.173l0.1564 0.156375v1.173l-1.693125 1.693125Z"/><path d="M5.271 6.400575v-0.221875l1.107525-1.107525h0.221875l1.693125 1.6931v1.173l-0.1564 0.156425h-1.173l-1.693125-1.693125Z"/><path d="M15.020825 15.35715h-1.6113l-0.134575-0.13455V11.4508c0-0.67105-0.2637-1.1912-1.072975-1.20935-0.41645-0.010925-0.892925 0-1.402125 0.019975l-0.0764 0.0782v4.88115l-0.134575 0.13455h-1.611275l-0.134575-0.13455V8.777475l0.134575-0.1346h3.6263c1.4094 0 2.5515 1.1421 2.5515 2.5515v4.028225l-0.134575 0.13455Z"/><path d="M6.8297 12.94205H0.3845775L0.25 12.807475v-1.6149l0.1345775-0.1346H6.8297l0.1346 0.1346v1.6149l-0.1346 0.134575Z"/><path d="M23.615625 12.94205H17.170475l-0.134575-0.134575v-1.6149l0.134575-0.1346h6.44515l0.134575 0.1346v1.6149l-0.134575 0.134575Z"/><path d="M11.07055 6.629675V1.7958325l0.1346-0.1345775h1.6149l0.134575 0.1345775V6.629675l-0.134575 0.134575h-1.6149l-0.1346-0.134575Z"/><path d="M11.07055 22.2041V17.3703l0.1346-0.134575h1.6149l0.134575 0.134575v4.8338l-0.134575 0.134575h-1.6149l-0.1346-0.134575Z"/></svg>`
+  },
+  {
+    name: 'Cloudflare',
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="Cloudflare"><path d="M19.11605 11.2943c-0.078775 0-0.156475 0.002875-0.234175 0.005375-0.0126 0.000675-0.02495 0.0036-0.036525 0.0086-0.041775 0.014225-0.07355 0.04855-0.0845 0.0913l-0.333025 1.16325c-0.143575 0.50015-0.090225 0.962025 0.1511 1.301075 0.2213 0.31365 0.5894 0.497675 1.0363 0.51915l1.8065 0.10955c0.0537 0.002875 0.10025 0.02865 0.12855 0.07125 0.030025 0.0461 0.036775 0.103575 0.01825 0.1554-0.0297 0.08485-0.1063 0.1445-0.19585 0.1525l-1.87705 0.109575c-1.019825 0.04725-2.116975 0.879325-2.5019 1.893975l-0.13535 0.358025c-0.011825 0.030125-0.008375 0.0641 0.009225 0.091225 0.017625 0.027125 0.04725 0.0441 0.079575 0.04555h6.46475c0.07725 0.000325 0.145225-0.05095 0.16615-0.1253 0.114825-0.412675 0.17265-0.8391 0.1719-1.267425 0-2.585-2.07295-4.6802-4.63105-4.6802"/><path d="m16.294425 17.21975 0.1196-0.4207c0.14395-0.500175 0.0906-0.962025-0.1504-1.301075-0.222-0.31365-0.58975-0.497675-1.037-0.51915l-8.473925-0.109575c-0.05345-0.00095-0.103225-0.02745-0.133925-0.071225-0.030125-0.04605-0.037025-0.10355-0.0186-0.1554 0.02995-0.0854 0.107425-0.145175 0.19765-0.152525l8.55305-0.10955c1.015525-0.0469 2.112675-0.879325 2.4976-1.894l0.4877-1.2889c0.01965-0.05465 0.024825-0.1136 0.014325-0.170775-0.555725-2.5141-2.778675-4.397-5.43635-4.397-2.44995 0-4.5286 1.59755-5.274475 3.818425-0.502175-0.38185-1.1311-0.557775-1.758525-0.49195-1.1745 0.11815-2.119825 1.074825-2.236575 2.26205-0.030225 0.296525-0.0084 0.596025 0.064475 0.88505C1.7897375 13.160725 0.25 14.749675 0.25 16.702375c0 0.176525 0.0125325 0.350525 0.0379575 0.520225 0.0104675 0.08235 0.08061 0.14405 0.16364 0.143925H16.10105c0.090525-0.001475 0.16925-0.0624 0.193375-0.14965"/></svg>`
+  },
+  {
+    name: 'GitHub',
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="GitHub"><path d="M12.0001 0.54004C5.51155 0.54004 0.25 5.800625 0.25 12.290125c0 5.1915 3.36675 9.59595 8.035425 11.14965 0.58725 0.10875 0.802825-0.2549 0.802825-0.56525 0-0.2802-0.0109-1.2058-0.01595-2.187625-3.268875 0.710775-3.95865-1.38635-3.95865-1.38635-0.534525-1.35815-1.30465-1.7193-1.30465-1.7193-1.066075-0.729275 0.08035-0.714275 0.08035-0.714275 1.179925 0.082875 1.8012 1.21085 1.8012 1.21085 1.048 1.796325 2.7488 1.277 3.4193 0.976775 0.105475-0.75945 0.409975-1.2778 0.746-1.571225-2.60985-0.2971-5.353375-1.304625-5.353375-5.806925 0-1.28285 0.459-2.33105 1.21065-3.1539-0.122-0.29595-0.524175-1.49105 0.113825-3.109525 0 0 0.9867-0.3158 3.232125 1.204425 0.937275-0.26035 1.94245-0.3909 2.941025-0.395375 0.998575 0.004475 2.004525 0.135025 2.94355 0.395375 2.2427-1.520225 3.228025-1.204425 3.228025-1.204425 0.639575 1.618475 0.2372 2.813575 0.1152 3.109525 0.7534 0.82285 1.2093 1.87105 1.2093 3.1539 0 4.513-2.7488 5.5067-5.365275 5.7976 0.42145 0.364625 0.797 1.0797 0.797 2.17595 0 1.572175-0.013625 2.8375-0.013625 3.224525 0 0.312675 0.2115 0.679075 0.8071 0.563675C20.387525 21.882775 23.75 17.479875 23.75 12.290125c0-6.4895-5.260775-11.750085-11.7499-11.750085Z"/></svg>`
+  },
+  {
+    name: 'React',
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="React"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"/></svg>`
+  },
+  {
+    name: 'Framer Motion',
+    svg: `<svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-label="Framer"><path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/></svg>`
+  },
 ];
 
 const highlights = [
@@ -33,7 +58,10 @@ const highlights = [
 ];
 ---
 
-<Layout title="Architectures Web Antigravité">
+<Layout
+  title="Architectures Web Antigravité"
+  description="NeuralCraft Engine — Je conçois des webapps ambitieuses, rapides et robustes. Fullstack Next.js, temps réel, interfaces qui impressionnent."
+>
   
   <!-- SLIDE 1 : HERO LOGO INTERACTIF -->
   <section class="min-h-screen w-full flex flex-col items-center justify-center relative bg-slate-950 px-6">
@@ -69,85 +97,152 @@ const highlights = [
           </span>
         </h3>
         <p class="text-slate-300 text-sm md:text-xl max-w-3xl mx-auto font-normal leading-relaxed pt-2">
-          De la plateforme métier haute précision au système de communication temps réel, je conçois des applications distribuées (Next.js, Socket.io, Supabase) capables d’absorber la complexité avec la fluidité d'un jeu vidéo.
+          Je conçois des applications web ambitieuses — rapides, robustes et taillées pour durer. Des interfaces qui impressionnent, des architectures qui tiennent la charge.
         </p>
       </div>
 
-      <!-- LOGOS STACK TECHNIQUE -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-        {techStack.map((tech) => (
-          <div class="group bg-slate-950/80 border border-slate-800/80 hover:border-emerald-500/50 rounded-2xl p-5 text-left transition-all duration-300 hover:-translate-y-2 shadow-xl">
-            <div class="flex items-center gap-3 text-emerald-400 mb-2 group-hover:scale-110 transition-transform origin-left">
-              <Fragment set:html={tech.svg} />
-              <span class="font-extrabold text-slate-100 text-lg">{tech.name}</span>
+      <!-- BANDEAU DÉFILANT INFINI -->
+      <div class="marquee-wrapper" aria-label="Technologies maîtrisées">
+        <div class="marquee-track">
+          <!-- Première passe -->
+          {marqueeItems.map((item) => (
+            <div class="marquee-item">
+              <span class="marquee-item__icon text-emerald-400">
+                <Fragment set:html={item.svg} />
+              </span>
+              <span class="marquee-item__name">{item.name}</span>
             </div>
-            <p class="text-xs text-slate-400 font-mono leading-tight">{tech.desc}</p>
-          </div>
-        ))}
+          ))}
+          <!-- Duplication pour la boucle sans-couture -->
+          {marqueeItems.map((item) => (
+            <div class="marquee-item" aria-hidden="true">
+              <span class="marquee-item__icon text-emerald-400">
+                <Fragment set:html={item.svg} />
+              </span>
+              <span class="marquee-item__name">{item.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <!-- CARTES HIGHLIGHTS -->
-      <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/60 max-w-3xl mx-auto">
-        {highlights.map((h) => (
-          <div class="text-center space-y-1">
-            <div class="text-xs font-mono uppercase text-slate-500">{h.label}</div>
-            <div class="text-xl md:text-3xl font-extrabold text-emerald-400 font-mono">{h.value}</div>
-            <div class="text-[10px] text-slate-400 font-mono">{h.sub}</div>
-          </div>
-        ))}
+      <!-- STATS VALEUR -->
+      <div class="grid grid-cols-3 gap-px pt-6 border-t border-slate-800/60 max-w-3xl mx-auto w-full">
+        <div class="text-center px-4 py-2 space-y-1 group">
+          <div class="text-3xl md:text-5xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform duration-300">3⁠+</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider">années d’expérience</div>
+        </div>
+        <div class="text-center px-4 py-2 space-y-1 group border-x border-slate-800/60">
+          <div class="text-3xl md:text-5xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform duration-300">100%</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider">sur-mesure</div>
+        </div>
+        <div class="text-center px-4 py-2 space-y-1 group">
+          <div class="text-3xl md:text-5xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform duration-300">∞</div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider">scalabilité</div>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- SLIDE 3 : CTA BOUTONS CYBER -->
-  <section class="min-h-screen w-full flex flex-col items-center justify-center bg-slate-950 px-6 border-t border-slate-900 relative">
-    <div class="space-y-8 text-center max-w-3xl mx-auto scroll-reveal">
-      <div class="space-y-3">
-        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Lancement de projet</span>
-        <h3 class="text-4xl md:text-6xl font-extrabold tracking-tight">Un projet d'envergure en vue ?</h3>
-        <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto">
-          Bénéficiez d'une ingénierie sur-mesure pour donner vie à vos plateformes les plus ambitieuses.
+  <!-- SLIDE 3 : CTA -->
+  <section class="min-h-screen w-full flex flex-col items-center justify-center bg-slate-950 px-6 border-t border-slate-900 relative overflow-hidden">
+
+    <!-- Halo de fond -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-emerald-500/5 blur-[120px] animate-pulse"></div>
+    </div>
+
+    <div class="space-y-10 text-center max-w-3xl mx-auto scroll-reveal relative z-10">
+      <div class="space-y-4">
+        <span class="inline-block text-[10px] font-mono uppercase tracking-[0.25em] text-emerald-400/80 border border-emerald-500/20 rounded-full px-4 py-1.5 bg-emerald-500/5">
+          Lancement de projet
+        </span>
+        <h3 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-none">
+          Un projet
+          <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent"> ambitieux</span>
+          <br/>en vue ?
+        </h3>
+        <p class="text-slate-400 text-base max-w-md mx-auto leading-relaxed">
+          Des idées grandes méritent une exécution à la hauteur.
         </p>
       </div>
-      
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
-        <a href="/services" class="btn-cyber-primary w-full sm:w-auto">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-          </svg>
-          <span>Concevoir votre Webapp</span>
+
+      <!-- BOUTONS PREMIUM -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+
+        <!-- Bouton principal : glow + gradient animé -->
+        <a href="/services" class="btn-premium-primary group">
+          <span class="btn-premium-primary__glow"></span>
+          <span class="btn-premium-primary__inner">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <span>Démarrer un projet</span>
+          </span>
         </a>
 
-        <a href="/projets" class="btn-cyber-secondary w-full sm:w-auto">
-          <span>Voir Paneum & Lupycha</span>
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
+        <!-- Bouton secondaire : glass + border animée -->
+        <a href="/projets" class="btn-premium-secondary group">
+          <span class="btn-premium-secondary__border"></span>
+          <span class="btn-premium-secondary__inner">
+            <span>Voir les réalisations</span>
+            <svg class="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </span>
         </a>
+
       </div>
     </div>
   </section>
 
-  <!-- SCRIPT LOGO CLIC -->
+  <!-- SCRIPT LOGO CLIC + AUTO-REPLAY -->
   <script>
     function setupLogoInteraction() {
-      const triggerBtn = document.getElementById('logo-trigger');
-      const svg = document.getElementById('main-hero-svg');
+      const triggerBtn   = document.getElementById('logo-trigger');
+      const svg          = document.getElementById('main-hero-svg');
       const targetSection = document.getElementById('antigravity-section');
+      const heroSection  = triggerBtn?.closest('section');
 
-      if (triggerBtn && svg && targetSection) {
-        triggerBtn.addEventListener('click', () => {
-          svg.classList.add('deconstruct');
+      if (!triggerBtn || !svg) return;
 
-          setTimeout(() => {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-          }, 250);
+      // Fonction qui joue l'animation (sans scroll)
+      const playAnim = () => {
+        if (svg.classList.contains('deconstruct')) return; // déjà en cours
+        svg.classList.add('deconstruct');
+        setTimeout(() => svg.classList.remove('deconstruct'), 1200);
+      };
 
-          setTimeout(() => {
-            svg.classList.remove('deconstruct');
-          }, 1200);
-        });
+      // Clic manuel → joue l'anim + scroll vers la section suivante
+      triggerBtn.addEventListener('click', () => {
+        playAnim();
+        if (targetSection) {
+          setTimeout(() => targetSection.scrollIntoView({ behavior: 'smooth' }), 250);
+        }
+      });
+
+      // Auto-replay toutes les 7.5 secondes quand la hero est visible
+      let autoTimer: ReturnType<typeof setInterval> | null = null;
+
+      const startAuto = () => {
+        if (autoTimer) return;
+        // Première frappe après 7.5s
+        autoTimer = setInterval(playAnim, 7500);
+      };
+
+      const stopAuto = () => {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      };
+
+      // IntersectionObserver — démarre/arrête selon la visibilité
+      if (heroSection) {
+        const observer = new IntersectionObserver(
+          ([entry]) => entry.isIntersecting ? startAuto() : stopAuto(),
+          { threshold: 0.3 }
+        );
+        observer.observe(heroSection);
+      } else {
+        startAuto(); // fallback si pas de section trouvée
       }
     }
 

@@ -1,44 +1,69 @@
 ---
 // src/pages/projets.astro
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const projects = [
+
   {
-    title: 'Paneum',
-    category: 'Architecture Métier',
-    description: 'Calcul haute précision pour professionnels. Interface réactive sur-mesure.',
-    techs: ['Astro', 'Edge Functions'],
-    status: 'Actif'
+    title: "LUPYCHA",
+    category: "Ludopédagogie RH",
+    description:
+      "LUPYCHA est une entreprise française spécialisée dans la ludopédagogie au service des Ressources Humaines, du management et du développement des compétences.",
+    techs: [
+      "Next.js",
+      "React",
+      "CSS Modules",
+      "Framer Motion",
+      "NextAuth.js",
+      "MongoDB",
+      "Socket.io",
+      "Render",
+    ],
+    status: "Actif",
   },
   {
-    title: 'N-Engine',
-    category: 'Lab Project',
-    description: 'Système d’animation SVG dynamique haute fréquence. Physique CSS.',
-    techs: ['CSS Physics', 'SVG Dynamic'],
-    status: 'Experimental'
-  }
+    title: "N-Icons",
+    category: "Lab Project",
+    description:
+      "N-Icons est une bibliothèque d'icônes SVG interactive et animée pour vos projets web.",
+    techs: ["Astro", "SVG", "SVG Animation"],
+    status: "Actif",
+  },
 ];
 ---
 
-<Layout title="Réalisations High-Perf">
-  
-  {projects.map((proj, index) => (
-    <section class={`h-screen w-full flex flex-col items-center justify-center snap-start snap-always px-6 text-center ${index % 2 === 0 ? 'bg-slate-950' : 'bg-slate-900/50'}`}>
-      <div class="space-y-8 max-w-7xl mx-auto">
-        <div class="flex items-center gap-4 justify-center">
-            <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">{proj.category}</span>
-            <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">{proj.status}</span>
-        </div>
-        <h2 class="text-6xl md:text-9xl font-extrabold tracking-tighter leading-none text-slate-100">{proj.title}</h2>
-        <p class="text-slate-400 text-lg md:text-3xl max-w-3xl mx-auto font-medium leading-relaxed">{proj.description}</p>
-        
-        <div class="flex flex-wrap gap-2 pt-10 justify-center font-mono">
-          {proj.techs.map((t) => (
-            <span class="text-sm font-bold text-slate-600">#{t}</span>
-          ))}
-        </div>
-      </div>
-    </section>
-  ))}
+<Layout
+  title="Réalisations High-Perf"
+  description="Découvrez LUPYCHA et N-Icons — deux projets emblématiques conçus avec Next.js, Astro, Socket.io et une exigence UI/UX de premier plan."
+>
+  {
+    projects.map((proj, index) => (
+      <section
+        class={`h-screen w-full flex flex-col items-center justify-center snap-start snap-always px-6 text-center ${index % 2 === 0 ? "bg-slate-950" : "bg-slate-900/50"}`}
+      >
+        <div class="space-y-8 max-w-7xl mx-auto">
+          <div class="flex items-center gap-4 justify-center">
+            <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">
+              {proj.category}
+            </span>
+            <span class="text-[10px] font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+              {proj.status}
+            </span>
+          </div>
+          <h2 class="text-6xl md:text-9xl font-extrabold tracking-tighter leading-none text-slate-100">
+            {proj.title}
+          </h2>
+          <p class="text-slate-400 text-lg md:text-3xl max-w-3xl mx-auto font-medium leading-relaxed">
+            {proj.description}
+          </p>
 
+          <div class="flex flex-wrap gap-2 pt-10 justify-center font-mono">
+            {proj.techs.map((t) => (
+              <span class="text-sm font-bold text-slate-600">#{t}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
 </Layout>
