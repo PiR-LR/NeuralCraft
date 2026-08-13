@@ -3,9 +3,81 @@
 import Layout from '../layouts/Layout.astro';
 
 const pillars = [
-  { step: '01', title: 'Code Pur', desc: 'Zéro JS client inutile. L’Edge Computing au service de la performance brute.' },
-  { step: '02', title: 'Vitesse Éclair', desc: 'Temps de chargement instantanés. architectures compilées pour la vélocité.' },
-  { step: '03', title: 'Edge Deployment', desc: 'Souveraineté des données et déploiement mondial sur le réseau Cloudflare Pages.' }
+  {
+    step: '01',
+    title: 'Code Pur',
+    kicker: 'Zéro compromis',
+    desc: 'Pas de librairies jetables, pas de dépendances fantômes. Chaque ligne est intentionnelle, testée et taillée pour durer. Le code est un actif, pas une dette.',
+    points: [
+      'TypeScript strict sur 100% du codebase',
+      'Zero-JS client par défaut',
+      'Architecture hexagonale documentée',
+    ],
+    metrics: [
+      { label: 'Lighthouse', value: '100', unit: '/100' },
+      { label: 'Bundle', value: '<50', unit: 'kb' },
+      { label: 'Deps', value: '<20', unit: 'pkgs' },
+    ],
+  },
+  {
+    step: '02',
+    title: 'Vitesse Éclair',
+    kicker: 'La latence est l\'ennemi',
+    desc: 'Chaque milliseconde compte : SEO, conversion, expérience. Je compile pour la vélocité, pas pour la facilité. Le temps de chargement n\'est pas négociable.',
+    points: [
+      'Astro SSG pour les vitrines (< 0.5s LCP)',
+      'Next.js App Router & Streaming pour les apps',
+      'Prefetch intelligent & lazy-loading agressif',
+    ],
+    metrics: [
+      { label: 'LCP moyen', value: '<0.5', unit: 's' },
+      { label: 'TTFB', value: '<80', unit: 'ms' },
+      { label: 'Web Vitals', value: 'A+', unit: '' },
+    ],
+  },
+  {
+    step: '03',
+    title: 'Edge Deployment',
+    kicker: 'Partout, tout le temps',
+    desc: 'Votre application vit au plus près de vos utilisateurs. Déploiement mondial sur le réseau Cloudflare : latence minimale, résilience maximale, aucune région oubliée.',
+    points: [
+      'Cloudflare Pages / Workers global',
+      '+300 points de présence actifs',
+      'Rollback instantané en 1 clic',
+    ],
+    metrics: [
+      { label: 'Uptime', value: '99.99', unit: '%' },
+      { label: 'POPs', value: '310', unit: '+' },
+      { label: 'Deploy', value: '<30', unit: 's' },
+    ],
+  },
+];
+
+const process = [
+  {
+    num: '01',
+    title: 'Discovery',
+    desc: 'Cartographie de vos enjeux métier et contraintes techniques. Rien n\'est codé avant que l\'architecture soit validée ensemble.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-6-6 6 6 0 016 6z" />',
+  },
+  {
+    num: '02',
+    title: 'Blueprint',
+    desc: 'Modélisation des données, choix de stack, contrat d\'API. Un plan solide avant la première ligne de code.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6M9 8h6M5 4h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z" />',
+  },
+  {
+    num: '03',
+    title: 'Build',
+    desc: 'Développement itératif, démos régulières, transparence totale. Pas de surprise en fin de sprint.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />',
+  },
+  {
+    num: '04',
+    title: 'Deploy',
+    desc: 'Mise en production, monitoring, documentation. Vous gardez le contrôle total de votre outil.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />',
+  },
 ];
 ---
 
@@ -13,20 +85,346 @@ const pillars = [
   title="Philosophie Zero-Overhead"
   description="Ma philosophie de développement : zéro compromis sur la performance, la lisibilité et l'expérience utilisateur. Code propre, architecture intentionnelle."
 >
-  
-  {pillars.map((item, index) => (
-    <section class={`h-screen w-full flex flex-col items-center justify-center snap-start snap-always px-6 text-center ${index % 2 === 0 ? 'bg-slate-950' : 'bg-slate-900/50'} relative overflow-hidden`}>
-      <!-- Numéro géant en arrière-plan -->
-      <div class="absolute -bottom-20 -right-20 text-[200px] md:text-[500px] font-extrabold font-mono text-emerald-500/5 -z-10 tracking-tighter opacity-70">
-        {item.step}
+  <!-- ═══ HERO : TITRE DECODE ═══ -->
+  <section class="relative min-h-screen w-full flex flex-col items-center justify-center px-6 bg-slate-950 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-emerald-500/5 blur-[160px] rounded-full pointer-events-none"></div>
+    <div
+      class="absolute inset-0 opacity-[0.03] pointer-events-none"
+      style="background-image: linear-gradient(rgba(52,211,153,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.4) 1px, transparent 1px); background-size: 60px 60px;"
+    ></div>
+
+    <div class="relative z-10 text-center max-w-5xl mx-auto space-y-8">
+      <span class="inline-block text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400 border border-emerald-500/20 rounded-full px-5 py-2 bg-emerald-500/5">
+        Manifeste NeuralCraft
+      </span>
+
+      <h1 class="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95]">
+        <span data-scramble>L'ingénierie,</span><br />
+        <span data-scramble class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">sans compromis.</span>
+      </h1>
+
+      <p class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
+        Chaque décision technique est pesée. Chaque abstraction a un coût. Je construis des systèmes qui restent{" "}
+        <span class="text-emerald-400 font-semibold">rapides, lisibles et maintenables</span> — même dans 3 ans.
+      </p>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
+      <span class="text-[10px] font-mono uppercase tracking-widest">Explorer</span>
+      <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="relative py-20 md:py-28 px-6 bg-slate-900/40 border-y border-slate-900">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-slate-800/60 border border-slate-800/60 rounded-2xl overflow-hidden scroll-reveal">
+      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
+        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">3⁠+</div>
+        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">années d'exp.</div>
+      </div>
+      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
+        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">100%</div>
+        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">sur-mesure</div>
+      </div>
+      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
+        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">&lt;0.5s</div>
+        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">LCP moyen</div>
+      </div>
+      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
+        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">∞</div>
+        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">scalabilité</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SCROLL HORIZONTAL (pattern FIXED, comme /services) ═══ -->
+  <section id="pillars-section" class="relative" style="height: 420svh;">
+    <!-- Viewport fixed : reste épinglé pendant tout le scroll de la section -->
+    <div id="h-viewport" class="fixed inset-0 z-10 flex items-center overflow-hidden pointer-events-none opacity-0">
+      <!-- Barre de progression -->
+      <div id="h-progress" class="absolute top-0 left-0 z-20 h-[2px] bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400" style="width: 0%"></div>
+
+      <!-- Compteur -->
+      <div id="h-counter" class="absolute top-24 right-6 md:right-10 z-20 font-mono text-xs md:text-sm text-emerald-400/80 tracking-widest">
+        01 / 04
       </div>
 
-      <div class="space-y-8 max-w-5xl mx-auto z-10">
-        <h2 class="text-[12px] font-mono uppercase tracking-widest text-emerald-400">Pilier Ingénierie</h2>
-        <h3 class="text-6xl md:text-9xl font-extrabold tracking-tighter leading-none text-slate-100">{item.title}</h3>
-        <p class="text-slate-400 text-lg md:text-3xl max-w-2xl mx-auto font-medium leading-relaxed">{item.desc}</p>
+      <!-- Hint -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 text-slate-500">
+        <span class="text-[10px] font-mono uppercase tracking-widest">Glisser</span>
+        <svg class="w-4 h-4 text-emerald-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
       </div>
-    </section>
-  ))}
 
+      <!-- Track horizontal -->
+      <div id="h-track" class="flex items-center gap-6 md:gap-10 pl-[8vw] pr-[14vw] will-change-transform">
+        <!-- Carte intro -->
+        <div class="shrink-0 w-[85vw] sm:w-[60vw] lg:w-[30vw] flex flex-col justify-center space-y-6">
+          <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">La doctrine</span>
+          <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[0.95]">
+            Une doctrine,<br />
+            <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">trois lois.</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+            Continuez à scroller : la page pivote. Chaque loi est non négociable.
+          </p>
+        </div>
+
+        <!-- Cartes piliers -->
+        {pillars.map((item) => (
+          <article class="relative shrink-0 w-[85vw] sm:w-[70vw] lg:w-[44vw] rounded-3xl border border-slate-800/80 bg-slate-900/60 backdrop-blur-xl p-8 md:p-12 overflow-hidden">
+            <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 opacity-70"></div>
+            <div class="absolute -top-8 -right-4 font-mono font-extrabold text-[140px] md:text-[200px] leading-none text-emerald-500/[0.06] select-none pointer-events-none">
+              {item.step}
+            </div>
+
+            <div class="relative space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-mono font-bold text-emerald-400">{item.step}</span>
+                <span class="h-px w-10 bg-emerald-400/40"></span>
+                <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500">{item.kicker}</span>
+              </div>
+
+              <h3 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-emerald-400">
+                {item.title}
+              </h3>
+
+              <p class="text-slate-400 text-sm md:text-base leading-relaxed max-w-md">{item.desc}</p>
+
+              <ul class="space-y-2">
+                {item.points.map((point) => (
+                  <li class="flex items-start gap-3">
+                    <span class="mt-[7px] w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                    <span class="text-slate-400 text-xs md:text-sm leading-relaxed">{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="flex gap-6 md:gap-8 pt-4 border-t border-slate-800/60">
+                {item.metrics.map((m) => (
+                  <div>
+                    <div class="text-xl md:text-3xl font-extrabold text-emerald-400 tabular-nums">
+                      {m.value}<span class="text-xs md:text-sm text-emerald-400/60 font-mono ml-0.5">{m.unit}</span>
+                    </div>
+                    <div class="text-[9px] md:text-[10px] text-slate-500 uppercase tracking-wider font-mono mt-1">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS (redesign : grid + ligne qui se dessine) ═══ -->
+  <section class="relative z-20 py-24 md:py-32 px-6 bg-slate-950 border-t border-slate-900 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center space-y-4 mb-16 md:mb-24 scroll-reveal">
+        <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">Méthodologie</span>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter">
+          Un process{" "}
+          <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">transparent</span>
+        </h2>
+        <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">
+          Pas de boîte noire. Vous savez toujours où nous en sommes, ce qui a été livré, et ce qui arrive.
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Ligne horizontale qui se dessine (desktop) -->
+        <div class="hidden md:block absolute top-[10px] left-0 right-0 h-px bg-slate-800"></div>
+        <div class="hidden md:block absolute top-[10px] left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 line-draw-x"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 relative">
+          {process.map((step, i) => (
+            <div class="relative group scroll-reveal">
+              <!-- Nœud sur la ligne (desktop) -->
+              <div class="hidden md:flex absolute top-[10px] left-0 -translate-y-1/2 w-5 h-5 rounded-full bg-slate-950 border-2 border-emerald-400/60 items-center justify-center group-hover:border-emerald-400 group-hover:scale-125 transition-all z-10">
+                <div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+              </div>
+
+              <!-- Carte -->
+              <div class="md:mt-12 h-full rounded-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-sm p-6 space-y-4 group-hover:border-emerald-500/40 group-hover:-translate-y-1 group-hover:shadow-[0_10px_40px_-10px_rgba(52,211,153,0.25)] transition-all duration-300">
+                <div class="flex items-center justify-between">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/30 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" set:html={step.icon}></svg>
+                  </div>
+                  <span class="font-mono font-extrabold text-3xl text-slate-800 group-hover:text-emerald-500/20 transition-colors">{step.num}</span>
+                </div>
+                <h3 class="text-xl font-extrabold tracking-tight group-hover:text-emerald-400 transition-colors">{step.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA FINAL ═══ -->
+  <section class="relative z-20 min-h-[80vh] w-full flex items-center justify-center px-6 py-24 bg-slate-950 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="relative z-10 text-center max-w-3xl mx-auto space-y-8 scroll-reveal">
+      <span class="inline-block text-[10px] font-mono uppercase tracking-[0.25em] text-emerald-400/80 border border-emerald-500/20 rounded-full px-4 py-1.5 bg-emerald-500/5">
+        Prêt à collaborer ?
+      </span>
+
+      <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-none">
+        Une idée{" "}
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">ambitieuse</span>
+        <br />en tête ?
+      </h2>
+
+      <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+        Pas de commercial, pas de blabla — juste un échange technique franc entre ingénieurs.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="mailto:contact@neuralcraft.fr" class="btn-premium-primary group">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          <span>Démarrer la conversation</span>
+        </a>
+        <a href="/services" class="btn-premium-secondary group">
+          <span>Revoir les services</span>
+          <svg class="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Ligne horizontale du process qui se dessine au scroll */
+    .line-draw-x {
+      transform-origin: left center;
+      animation: lineDrawX 1s linear both;
+      animation-timeline: view();
+      animation-range: entry 20% exit 80%;
+    }
+    @keyframes lineDrawX {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+  </style>
+
+  <script>
+    // ── TITRE DECODE ────────────────────────────────
+    const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#";
+
+    function scrambleEl(el: HTMLElement, delay = 0) {
+      const original = el.dataset.original || el.textContent || "";
+      el.dataset.original = original;
+      const total = Math.max(24, original.length * 3);
+      let frame = 0;
+
+      setTimeout(() => {
+        const tick = () => {
+          frame++;
+          const progress = frame / total;
+          let out = "";
+          for (let i = 0; i < original.length; i++) {
+            if (original[i] === " ") { out += " "; continue; }
+            if (i / original.length < progress) out += original[i];
+            else out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          }
+          el.textContent = out;
+          if (frame < total) requestAnimationFrame(tick);
+          else el.textContent = original;
+        };
+        tick();
+      }, delay);
+    }
+
+    function initScramble() {
+      document.querySelectorAll<HTMLElement>("[data-scramble]").forEach((el, i) => {
+        scrambleEl(el, 250 + i * 350);
+      });
+    }
+
+    // ── SCROLL HORIZONTAL (FIXED) ───────────────────
+    let hCleanup: (() => void) | null = null;
+
+    function initHorizontal() {
+      if (hCleanup) hCleanup();
+
+      const section = document.getElementById("pillars-section");
+      const viewport = document.getElementById("h-viewport");
+      const track = document.getElementById("h-track");
+      const bar = document.getElementById("h-progress");
+      const counter = document.getElementById("h-counter");
+      if (!section || !viewport || !track) return;
+
+      let target = 0;
+      let current = 0;
+      let maxTranslate = 0;
+      let rafId = 0;
+
+      const measure = () => {
+        maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
+      };
+
+      const onScroll = () => {
+        const rect = section.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const total = section.offsetHeight - vh;
+
+        // Progression du scroll dans la section
+        target = total > 0 ? Math.min(Math.max(-rect.top / total, 0), 1) : 0;
+
+        // Fade-in quand la section entre dans l'écran
+        const fade = Math.min(Math.max(1 - rect.top / (vh * 0.5), 0), 1);
+        viewport.style.opacity = fade.toFixed(3);
+      };
+
+      const panels = track.children.length;
+
+      const raf = () => {
+        // Lerp = inertie physique
+        current += (target - current) * 0.085;
+        if (Math.abs(target - current) < 0.0004) current = target;
+
+        // Skew = effet de matière selon la vélocité
+        const velocity = target - current;
+        const skew = Math.max(-2.5, Math.min(2.5, velocity * -10));
+
+        track.style.transform = `translate3d(${(-current * maxTranslate).toFixed(2)}px,0,0) skewX(${skew.toFixed(2)}deg)`;
+
+        if (bar) bar.style.width = `${(current * 100).toFixed(2)}%`;
+        if (counter) {
+          const idx = Math.min(panels - 1, Math.round(current * (panels - 1)));
+          counter.textContent = `0${idx + 1} / 0${panels}`;
+        }
+        rafId = requestAnimationFrame(raf);
+      };
+
+      const onResize = () => { measure(); onScroll(); };
+
+      measure();
+      onScroll();
+      rafId = requestAnimationFrame(raf);
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onResize);
+
+      hCleanup = () => {
+        cancelAnimationFrame(rafId);
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onResize);
+      };
+    }
+
+    initScramble();
+    initHorizontal();
+    document.addEventListener("astro:after-swap", () => {
+      initScramble();
+      initHorizontal();
+    });
+  </script>
 </Layout>
