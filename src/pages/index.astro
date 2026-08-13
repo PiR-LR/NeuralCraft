@@ -241,17 +241,13 @@ const highlights = [
         >
           Lancement de projet
         </span>
-        <h3
-          class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-none"
-        >
-          Un projet
-          <span
-            class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent"
-          >
-            ambitieux</span
-          >
-          <br />en vue ?
-        </h3>
+        <h3 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-none">
+  Un projet{" "}
+  <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+    ambitieux
+  </span>
+  <br />en vue ?
+</h3>
         <p class="text-slate-400 text-base max-w-md mx-auto leading-relaxed">
           Des idées grandes méritent une exécution à la hauteur.
         </p>
@@ -305,62 +301,79 @@ const highlights = [
   </section>
 
   <!-- SCRIPT LOGO CLIC + AUTO-REPLAY -->
-  <script>
-    function setupLogoInteraction() {
-      const triggerBtn = document.getElementById("logo-trigger");
-      const svg = document.getElementById("main-hero-svg");
-      const targetSection = document.getElementById("antigravity-section");
-      const heroSection = triggerBtn?.closest("section");
+<script>
+  function setupLogoInteraction() {
+    const triggerBtn = document.getElementById("logo-trigger");
+    const svg = document.getElementById("main-hero-svg");
+    const targetSection = document.getElementById("antigravity-section");
+    const heroSection = triggerBtn?.closest("section");
 
-      if (!triggerBtn || !svg) return;
+    if (!triggerBtn || !svg) return;
 
-      // Fonction qui joue l'animation (sans scroll)
-      const playAnim = () => {
-        if (svg.classList.contains("deconstruct")) return; // déjà en cours
-        svg.classList.add("deconstruct");
-        setTimeout(() => svg.classList.remove("deconstruct"), 1200);
-      };
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let autoTimer: number | null = null;
+    let observer: IntersectionObserver | null = null;
 
-      // Clic manuel → joue l'anim + scroll vers la section suivante
-      triggerBtn.addEventListener("click", () => {
-        playAnim();
-        if (targetSection) {
-          setTimeout(
-            () => targetSection.scrollIntoView({ behavior: "smooth" }),
-            250,
-          );
-        }
-      });
+    const playEntrance = () => {
+      const api = (svg as any).ncLogo;
+      api?.playEntrance?.();
+    };
 
-      // Auto-replay toutes les 7.5 secondes quand la hero est visible
-      let autoTimer: ReturnType<typeof setInterval> | null = null;
+    const playBurst = () => {
+      const api = (svg as any).ncLogo;
+      api?.playBurst?.();
+    };
 
-      const startAuto = () => {
-        if (autoTimer) return;
-        // Première frappe après 7.5s
-        autoTimer = setInterval(playAnim, 7500);
-      };
-
-      const stopAuto = () => {
-        if (autoTimer) {
-          clearInterval(autoTimer);
-          autoTimer = null;
-        }
-      };
-
-      // IntersectionObserver — démarre/arrête selon la visibilité
-      if (heroSection) {
-        const observer = new IntersectionObserver(
-          ([entry]) => (entry.isIntersecting ? startAuto() : stopAuto()),
-          { threshold: 0.3 },
-        );
-        observer.observe(heroSection);
-      } else {
-        startAuto(); // fallback si pas de section trouvée
+    const handleTriggerClick = () => {
+      playBurst();
+      if (targetSection) {
+        window.setTimeout(() => {
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }, 280);
       }
+    };
+
+    const startAuto = () => {
+      if (autoTimer || prefersReducedMotion) return;
+      autoTimer = window.setInterval(playEntrance, 7500);
+    };
+
+    const stopAuto = () => {
+      if (autoTimer !== null) {
+        window.clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    };
+
+    triggerBtn.addEventListener("click", handleTriggerClick);
+
+    if (heroSection) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            startAuto();
+          } else {
+            stopAuto();
+          }
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(heroSection);
+    } else {
+      startAuto();
     }
 
-    setupLogoInteraction();
-    document.addEventListener("astro:after-swap", setupLogoInteraction);
-  </script>
+    // Cleanup on navigation
+    const cleanup = () => {
+      triggerBtn.removeEventListener("click", handleTriggerClick);
+      stopAuto();
+      observer?.disconnect();
+    };
+
+    document.addEventListener("astro:before-swap", cleanup, { once: true });
+  }
+
+  setupLogoInteraction();
+  document.addEventListener("astro:after-swap", setupLogoInteraction);
+</script>
 </Layout>
