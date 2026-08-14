@@ -173,8 +173,7 @@ const gradientId = `${safeId}-energy-gradient`;
           p.life -= p.decay;
 
           this.ctx.beginPath();
-          this.ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
-          this.ctx.fillStyle = p.color;
+          this.ctx.arc(p.x, p.y, Math.max(0, p.size * p.life), 0, Math.PI * 2);          this.ctx.fillStyle = p.color;
           this.ctx.globalAlpha = p.life;
           this.ctx.fill();
         }

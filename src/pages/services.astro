@@ -41,12 +41,26 @@ const coreServices = [
   description="Conception de webapps sur-mesure, architectures distribuées, interfaces temps réel. Expertise Next.js, Supabase, Framer Motion — exécution sans compromis."
 >
 
-  <div class="relative w-full min-h-[450vh]" id="scroll-container">
+  <div class="relative w-full md:min-h-[450vh]" id="scroll-container">
 
-    <!-- CONTENEUR DU TITRE -->
+    <!-- ═══ HERO MOBILE (statique, scroll normal) ═══ -->
+    <div class="md:hidden px-6 pt-14 pb-10 text-center space-y-6">
+      <span class="inline-block text-xs font-mono uppercase tracking-widest px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        Ingénierie & Valeur Ajoutée
+      </span>
+      <h1 class="text-4xl font-extrabold tracking-tight leading-[1.1]">
+        Transformez vos besoins complexes en{" "}
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Webapps d'Exception.</span>
+      </h1>
+      <p class="text-slate-400 text-base leading-relaxed">
+        Du calcul métier distribué à la synchronisation temps réel, je conçois des architectures sur-mesure taillées pour la scalabilité et l'expérience utilisateur ultime.
+      </p>
+    </div>
+
+    <!-- ═══ HERO DESKTOP (fixed, piloté par le script) ═══ -->
     <div
       id="hero-box"
-      class="fixed left-1/2 w-full max-w-6xl px-6 z-40 text-center flex flex-col items-center pointer-events-none transition-all duration-700 ease-out origin-top"
+      class="hidden md:flex md:fixed left-1/2 w-full max-w-6xl px-6 z-40 text-center flex-col items-center pointer-events-none transition-all duration-700 ease-out origin-top"
       style="top: 100px; transform: translate(-50%, calc(35vh - 100px)) scale(1);"
     >
       <div id="hero-badge" class="transition-opacity duration-500 mb-6">
@@ -55,9 +69,8 @@ const coreServices = [
         </span>
       </div>
 
-      <!-- Le <br> est désactivé sur mobile pour laisser le texte respirer -->
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] w-full" id="hero-title">
-        Transformez vos besoins complexes en<br class="hidden md:inline" />{" "}
+        Transformez vos besoins complexes en <br />
         <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Webapps d'Exception.</span>
       </h1>
 
@@ -70,14 +83,58 @@ const coreServices = [
       </div>
     </div>
 
-    <!-- ZONE DES CARTES (id ajouté pour le fallback mobile) -->
-    <div id="cards-zone" class="fixed top-[26vh] md:top-[30vh] left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-30 pointer-events-none">
+    <!-- ═══ CARTES MOBILE (flux vertical normal) ═══ -->
+    <div class="md:hidden px-6 pb-16 space-y-6">
+      {coreServices.map((service) => (
+        <article class="relative overflow-hidden bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-5">
+          <div class="absolute -right-2 -bottom-6 text-8xl font-extrabold text-slate-800/30 select-none font-mono pointer-events-none">
+            {service.num}
+          </div>
+
+          <div class="relative z-10 space-y-1.5">
+            <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">{service.badge}</span>
+            <h2 class="text-2xl font-extrabold tracking-tight text-slate-100">{service.title}</h2>
+            <p class="text-xs font-mono text-slate-400">{service.subtitle}</p>
+          </div>
+
+          <p class="relative z-10 text-slate-300 text-sm leading-relaxed">{service.description}</p>
+
+          <ul class="relative z-10 space-y-2.5">
+            {service.points.map((point) => (
+              <li class="flex items-center gap-3 text-xs text-slate-300 font-medium">
+                <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                </svg>
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          <div class="relative z-10 flex flex-wrap gap-2">
+            {service.techs.map((tech) => (
+              <span class="text-xs font-mono px-3 py-1 rounded-lg bg-slate-950 border border-slate-800 text-slate-300">
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <a href="#contact-section" class="btn-cyber-secondary w-full relative z-10">
+            <span>Étudier ce besoin</span>
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- ═══ CARTES DESKTOP (fixed, switch au scroll) ═══ -->
+    <div id="cards-zone" class="hidden md:block md:fixed top-[30vh] left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-30 pointer-events-none">
       {coreServices.map((service) => (
         <div
           id={service.id}
           class="service-card absolute left-0 right-0 mx-6 bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl transition-all duration-700 ease-out opacity-0 translate-y-16 pointer-events-none"
         >
-          <!-- Filigrane Numéro -->
           <div class="absolute -right-4 -bottom-8 text-9xl font-extrabold text-slate-800/30 select-none font-mono pointer-events-none">
             {service.num}
           </div>
@@ -116,8 +173,8 @@ const coreServices = [
 
               <a href="#contact-section" class="btn-cyber-secondary w-full lg:w-auto pointer-events-auto">
                 <span>Étudier ce besoin</span>
-                <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
               </a>
             </div>
@@ -162,50 +219,11 @@ const coreServices = [
     </div>
   </section>
 
-  <!-- ═══ FALLBACK MOBILE : flux normal, plus de fixed ═══ -->
-  <style>
-    @media (max-width: 767px) {
-      /* Le conteneur retrouve une hauteur naturelle */
-      #scroll-container {
-        min-height: 0 !important;
-        height: auto !important;
-      }
-
-      /* Le hero redevient statique et scroll normalement */
-      #hero-box {
-        position: relative !important;
-        top: auto !important;
-        left: 0 !important;
-        transform: none !important;
-        padding-top: 2rem;
-        padding-bottom: 3rem;
-      }
-
-      /* La zone des cartes devient un flux vertical */
-      #cards-zone {
-        position: relative !important;
-        top: auto !important;
-        left: 0 !important;
-        transform: none !important;
-        padding-bottom: 4rem;
-      }
-
-      /* Les cartes s'empilent, toutes visibles, cliquables */
-      .service-card {
-        position: relative !important;
-        left: 0 !important;
-        right: 0 !important;
-        margin: 0 0 1.5rem 0 !important;
-        opacity: 1 !important;
-        transform: none !important;
-        pointer-events: auto !important;
-      }
-    }
-  </style>
-
-  <!-- SCRIPT PROPRE ET FIABLE (desktop uniquement) -->
+  <!-- SCRIPT (desktop uniquement) -->
   <script>
     function initCleanServicesScroll() {
+      const isMobile = () => window.innerWidth < 768;
+
       const heroBox = document.getElementById('hero-box');
       const heroBadge = document.getElementById('hero-badge');
       const heroSubtitle = document.getElementById('hero-subtitle');
@@ -217,30 +235,13 @@ const coreServices = [
         document.getElementById('service-2')
       ];
 
-      const isMobile = () => window.innerWidth < 768;
-
-      // Nettoie les styles inline si on passe en mobile
-      function resetMobile() {
-        if (heroBox) heroBox.style.transform = '';
-        if (heroBadge) heroBadge.style.opacity = '';
-        if (heroSubtitle) heroSubtitle.style.opacity = '';
-        if (heroScrollHint) heroScrollHint.style.opacity = '';
-        cards.forEach((card) => {
-          if (card) {
-            card.style.pointerEvents = '';
-            card.classList.remove('opacity-0', 'translate-y-16');
-            card.classList.add('opacity-100', 'translate-y-0');
-          }
-        });
-      }
-
       function onScroll() {
-        if (isMobile()) return; // Le CSS gère le flux mobile
+        // Sur mobile, tout est statique : rien à piloter
+        if (isMobile()) return;
 
         const scrollY = window.scrollY;
         const vh = window.innerHeight;
 
-        // 1. GESTION DU TITRE
         if (scrollY > 50) {
           if (heroBox) heroBox.style.transform = 'translate(-50%, 0) scale(0.65)';
           if (heroBadge) heroBadge.style.opacity = '0';
@@ -253,7 +254,6 @@ const coreServices = [
           if (heroScrollHint) heroScrollHint.style.opacity = '1';
         }
 
-        // 2. APPARITION DES CARTES
         const step1 = vh * 0.4;
         const step2 = vh * 1.4;
         const step3 = vh * 2.4;
@@ -266,13 +266,9 @@ const coreServices = [
           }
         });
 
-        if (scrollY >= step3) {
-          showCard(cards[2]);
-        } else if (scrollY >= step2) {
-          showCard(cards[1]);
-        } else if (scrollY >= step1) {
-          showCard(cards[0]);
-        }
+        if (scrollY >= step3) showCard(cards[2]);
+        else if (scrollY >= step2) showCard(cards[1]);
+        else if (scrollY >= step1) showCard(cards[0]);
       }
 
       function showCard(card: HTMLElement | null) {
@@ -283,16 +279,8 @@ const coreServices = [
         }
       }
 
-      function onResize() {
-        if (isMobile()) resetMobile();
-        else onScroll();
-      }
-
       window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onResize);
-
-      if (isMobile()) resetMobile();
-      else onScroll();
+      onScroll();
     }
 
     initCleanServicesScroll();
