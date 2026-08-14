@@ -42,10 +42,10 @@ const coreServices = [
 >
 
   <div class="relative w-full min-h-[450vh]" id="scroll-container">
-    
-    <!-- CONTENEUR DU TITRE (Reste toujours à z-40, sans aucun fond parasite !) -->
-    <div 
-      id="hero-box" 
+
+    <!-- CONTENEUR DU TITRE -->
+    <div
+      id="hero-box"
       class="fixed left-1/2 w-full max-w-6xl px-6 z-40 text-center flex flex-col items-center pointer-events-none transition-all duration-700 ease-out origin-top"
       style="top: 100px; transform: translate(-50%, calc(35vh - 100px)) scale(1);"
     >
@@ -55,9 +55,9 @@ const coreServices = [
         </span>
       </div>
 
-      <!-- TITRE : Forcé sur 2 lignes, l'échelle (scale) s'occupera de la taille finale -->
+      <!-- Le <br> est désactivé sur mobile pour laisser le texte respirer -->
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] w-full" id="hero-title">
-        Transformez vos besoins complexes en <br/>
+        Transformez vos besoins complexes en<br class="hidden md:inline" />{" "}
         <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Webapps d'Exception.</span>
       </h1>
 
@@ -70,10 +70,10 @@ const coreServices = [
       </div>
     </div>
 
-    <!-- ZONE DES CARTES (z-30) : Placée sous le titre en position finale -->
-    <div class="fixed top-[26vh] md:top-[30vh] left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-30 pointer-events-none">
+    <!-- ZONE DES CARTES (id ajouté pour le fallback mobile) -->
+    <div id="cards-zone" class="fixed top-[26vh] md:top-[30vh] left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-30 pointer-events-none">
       {coreServices.map((service) => (
-        <div 
+        <div
           id={service.id}
           class="service-card absolute left-0 right-0 mx-6 bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl transition-all duration-700 ease-out opacity-0 translate-y-16 pointer-events-none"
         >
@@ -83,7 +83,7 @@ const coreServices = [
           </div>
 
           <div class="flex flex-col lg:flex-row gap-8 justify-between items-start relative z-10">
-            
+
             <div class="space-y-5 max-w-2xl">
               <div class="space-y-1.5">
                 <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">{service.badge}</span>
@@ -116,8 +116,8 @@ const coreServices = [
 
               <a href="#contact-section" class="btn-cyber-secondary w-full lg:w-auto pointer-events-auto">
                 <span>Étudier ce besoin</span>
-                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
               </a>
             </div>
@@ -130,60 +130,80 @@ const coreServices = [
   </div>
 
   <!-- SECTION CONTACT FINALE -->
-<section
-  id="contact-section"
-  class="relative z-50 min-h-screen flex items-center justify-center px-6 py-24 overflow-hidden border-t border-slate-900 bg-slate-950"
->
-  <!-- Halo de fond centré -->
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"
-  ></div>
+  <section
+    id="contact-section"
+    class="relative z-50 min-h-screen flex items-center justify-center px-6 py-24 overflow-hidden border-t border-slate-900 bg-slate-950"
+  >
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-  <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-    <div class="space-y-4">
-      <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">
-        Prêt pour le niveau supérieur ?
-      </span>
+    <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+      <div class="space-y-4">
+        <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Prêt pour le niveau supérieur ?</span>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight">Un projet d'envergure en vue ?</h2>
+        <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal">
+          Parlons de votre architecture, de vos contraintes techniques et de vos objectifs métiers.
+        </p>
+      </div>
 
-      <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight">
-        Un projet d'envergure en vue ?
-      </h2>
-
-      <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal">
-        Parlons de votre architecture, de vos contraintes techniques et de vos
-        objectifs métiers.
-      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+        <a href="mailto:contact@neuralcraft.fr" class="btn-cyber-primary w-full sm:w-auto">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          <span>Concevoir votre Webapp</span>
+        </a>
+        <a href="/projets" class="btn-cyber-secondary w-full sm:w-auto">
+          <span>Voir Paneum & Lupycha</span>
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
-      <a href="mailto:contact@neuralcraft.fr" class="btn-cyber-primary w-full sm:w-auto">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          ></path>
-        </svg>
-        <span>Concevoir votre Webapp</span>
-      </a>
+  <!-- ═══ FALLBACK MOBILE : flux normal, plus de fixed ═══ -->
+  <style>
+    @media (max-width: 767px) {
+      /* Le conteneur retrouve une hauteur naturelle */
+      #scroll-container {
+        min-height: 0 !important;
+        height: auto !important;
+      }
 
-      <a href="/projets" class="btn-cyber-secondary w-full sm:w-auto">
-        <span>Voir Paneum & Lupycha</span>
-        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 8l4 4m0 0l-4 4m4-4H3"
-          ></path>
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+      /* Le hero redevient statique et scroll normalement */
+      #hero-box {
+        position: relative !important;
+        top: auto !important;
+        left: 0 !important;
+        transform: none !important;
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+      }
 
-  <!-- SCRIPT PROPRE ET FIABLE -->
+      /* La zone des cartes devient un flux vertical */
+      #cards-zone {
+        position: relative !important;
+        top: auto !important;
+        left: 0 !important;
+        transform: none !important;
+        padding-bottom: 4rem;
+      }
+
+      /* Les cartes s'empilent, toutes visibles, cliquables */
+      .service-card {
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 0 1.5rem 0 !important;
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+      }
+    }
+  </style>
+
+  <!-- SCRIPT PROPRE ET FIABLE (desktop uniquement) -->
   <script>
     function initCleanServicesScroll() {
       const heroBox = document.getElementById('hero-box');
@@ -197,18 +217,36 @@ const coreServices = [
         document.getElementById('service-2')
       ];
 
+      const isMobile = () => window.innerWidth < 768;
+
+      // Nettoie les styles inline si on passe en mobile
+      function resetMobile() {
+        if (heroBox) heroBox.style.transform = '';
+        if (heroBadge) heroBadge.style.opacity = '';
+        if (heroSubtitle) heroSubtitle.style.opacity = '';
+        if (heroScrollHint) heroScrollHint.style.opacity = '';
+        cards.forEach((card) => {
+          if (card) {
+            card.style.pointerEvents = '';
+            card.classList.remove('opacity-0', 'translate-y-16');
+            card.classList.add('opacity-100', 'translate-y-0');
+          }
+        });
+      }
+
       function onScroll() {
+        if (isMobile()) return; // Le CSS gère le flux mobile
+
         const scrollY = window.scrollY;
         const vh = window.innerHeight;
 
-        // 1. GESTION DU TITRE : Toggle via CSS Transform (Garantit 2 lignes et place fixe à 100px)
+        // 1. GESTION DU TITRE
         if (scrollY > 50) {
           if (heroBox) heroBox.style.transform = 'translate(-50%, 0) scale(0.65)';
           if (heroBadge) heroBadge.style.opacity = '0';
           if (heroSubtitle) heroSubtitle.style.opacity = '0';
           if (heroScrollHint) heroScrollHint.style.opacity = '0';
         } else {
-          // Centrage initial calculé
           if (heroBox) heroBox.style.transform = 'translate(-50%, calc(35vh - 100px)) scale(1)';
           if (heroBadge) heroBadge.style.opacity = '1';
           if (heroSubtitle) heroSubtitle.style.opacity = '1';
@@ -224,8 +262,7 @@ const coreServices = [
           if (card) {
             card.classList.add('opacity-0', 'translate-y-16');
             card.classList.remove('opacity-100', 'translate-y-0');
-            // Gère les clics uniquement sur la carte active
-            card.style.pointerEvents = 'none'; 
+            card.style.pointerEvents = 'none';
           }
         });
 
@@ -246,12 +283,19 @@ const coreServices = [
         }
       }
 
+      function onResize() {
+        if (isMobile()) resetMobile();
+        else onScroll();
+      }
+
       window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll(); // Force l'état initial
+      window.addEventListener('resize', onResize);
+
+      if (isMobile()) resetMobile();
+      else onScroll();
     }
 
     initCleanServicesScroll();
     document.addEventListener('astro:after-swap', initCleanServicesScroll);
   </script>
-
 </Layout>
