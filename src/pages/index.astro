@@ -63,39 +63,41 @@ const highlights = [
 ---
 
 <Layout
-  title="Architectures Web Antigravité"
-  description="NeuralCraft Engine — Je conçois des webapps ambitieuses, rapides et robustes. Fullstack Next.js, temps réel, interfaces qui impressionnent."
+  title="Développement de Sites Web & Applications Sur-Mesure"
+  description="NeuralCraft conçoit des sites web et applications sur-mesure : performance ultra-rapide, stabilité éprouvée et interfaces soignées au service de votre activité."
 >
   <!-- SLIDE 1 : HERO LOGO INTERACTIF -->
   <section
-    class="min-h-screen w-full flex flex-col items-center justify-center relative bg-slate-950 px-6"
+    class="min-h-[calc(100svh-5rem)] md:min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center relative bg-slate-950 px-6 overflow-hidden"
   >
-    <button
-      id="logo-trigger"
-      class="py-4 relative group cursor-pointer outline-none border-none bg-transparent"
-      title="Cliquer pour initialiser le noyau"
-    >
-      <div
-        class="absolute inset-0 bg-emerald-500/30 blur-3xl rounded-full opacity-60 group-hover:opacity-100 transition-opacity"
+    <div class="flex flex-col items-center justify-center -translate-y-6 md:translate-y-0 z-10">
+      <button
+        id="logo-trigger"
+        class="py-2 relative group cursor-pointer outline-none border-none bg-transparent"
+        title="Cliquer pour initialiser le noyau"
       >
-      </div>
-      <Logo
-        id="main-hero-svg"
-        class="w-48 h-48 md:w-72 md:h-72 relative z-10 mx-auto group-hover:scale-105 transition-transform duration-300"
-      />
-    </button>
+        <div
+          class="absolute inset-0 bg-emerald-500/30 blur-3xl rounded-full opacity-60 group-hover:opacity-100 transition-opacity"
+        >
+        </div>
+        <Logo
+          id="main-hero-svg"
+          class="w-44 h-44 sm:w-56 sm:h-56 md:w-72 md:h-72 relative z-10 mx-auto group-hover:scale-105 transition-transform duration-300"
+        />
+      </button>
 
-    <div class="text-center space-y-2 mt-4 z-10">
-      <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight">
-        NeuralCraft Engine
-      </h1>
-      <p class="text-slate-500 font-mono text-xs uppercase tracking-widest">
-        Cliquez sur le noyau ou faites défiler
-      </p>
+      <div class="text-center space-y-2 mt-3 z-10">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+          NeuralCraft
+        </h1>
+        <p class="text-slate-400 font-mono text-xs uppercase tracking-widest">
+          Cliquez sur le noyau ou faites défiler
+        </p>
+      </div>
     </div>
 
     <div
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce"
+      class="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 animate-bounce"
     >
       <span class="text-[10px] font-mono uppercase tracking-widest"
         >Faire défiler</span
@@ -182,12 +184,12 @@ const highlights = [
           <div
             class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform duration-300"
           >
-            3⁠+
+            &lt;0.5s
           </div>
           <div
             class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider leading-tight"
           >
-            années d'exp.
+            temps de réponse
           </div>
         </div>
         <div
@@ -208,12 +210,12 @@ const highlights = [
           <div
             class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform duration-300"
           >
-            ∞
+            99.9%
           </div>
           <div
             class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider leading-tight"
           >
-            scalabilité
+            disponibilité
           </div>
         </div>
       </div>
