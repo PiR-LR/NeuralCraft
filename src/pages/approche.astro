@@ -5,50 +5,50 @@ import Layout from '../layouts/Layout.astro';
 const pillars = [
   {
     step: '01',
-    title: 'Code Pur',
-    kicker: 'Zéro compromis',
-    desc: 'Pas de librairies jetables, pas de dépendances fantômes. Chaque ligne est intentionnelle, testée et taillée pour durer. Le code est un actif, pas une dette.',
+    title: 'Clarté & Simplicité',
+    kicker: 'L\'essentiel, sans détour',
+    desc: 'Pas de complexité inutile ni de fonctionnalités superflues. Chaque ligne et chaque écran répondent précisément à vos objectifs métiers, pour des outils simples à prendre en main et faciles à faire évoluer.',
     points: [
-      'TypeScript strict sur 100% du codebase',
-      'Zero-JS client par défaut',
-      'Architecture hexagonale documentée',
+      'Interfaces intuitives et pensées pour vos utilisateurs',
+      'Solutions pérennes et simples à maintenir',
+      'Structure propre sans usines à gaz',
     ],
     metrics: [
-      { label: 'Lighthouse', value: '100', unit: '/100' },
-      { label: 'Bundle', value: '<50', unit: 'kb' },
-      { label: 'Deps', value: '<20', unit: 'pkgs' },
+      { label: 'Prise en main', value: '100', unit: '%' },
+      { label: 'Dette technique', value: '0', unit: '' },
+      { label: 'Lisibilité', value: 'A+', unit: '' },
     ],
   },
   {
     step: '02',
-    title: 'Vitesse Éclair',
-    kicker: 'La latence est l\'ennemi',
-    desc: 'Chaque milliseconde compte : SEO, conversion, expérience. Je compile pour la vélocité, pas pour la facilité. Le temps de chargement n\'est pas négociable.',
+    title: 'Vitesse & Fluidité',
+    kicker: 'Une navigation instantanée',
+    desc: 'La rapidité met immédiatement vos clients en confiance et améliore votre référencement. Vos pages et applications s\'affichent en une fraction de seconde sur mobile comme sur ordinateur.',
     points: [
-      'Astro SSG pour les vitrines (< 0.5s LCP)',
-      'Next.js App Router & Streaming pour les apps',
-      'Prefetch intelligent & lazy-loading agressif',
+      'Temps de chargement ultra-court (< 0.5s)',
+      'Navigation instantanée et sans accroc',
+      'Optimisation soignée pour le référencement (SEO)',
     ],
     metrics: [
-      { label: 'LCP moyen', value: '<0.5', unit: 's' },
-      { label: 'TTFB', value: '<80', unit: 'ms' },
-      { label: 'Web Vitals', value: 'A+', unit: '' },
+      { label: 'Affichage moyen', value: '<0.5', unit: 's' },
+      { label: 'Performance', value: '100', unit: '/100' },
+      { label: 'Mobile', value: 'Top', unit: '' },
     ],
   },
   {
     step: '03',
-    title: 'Edge Deployment',
-    kicker: 'Partout, tout le temps',
-    desc: 'Votre application vit au plus près de vos utilisateurs. Déploiement mondial sur le réseau Cloudflare : latence minimale, résilience maximale, aucune région oubliée.',
+    title: 'Stabilité & Sérénité',
+    kicker: 'Toujours opérationnel',
+    desc: 'Vos outils et sites restent disponibles 24h/24 en toute sécurité. Des sauvegardes régulières, une infrastructure moderne et une tranquillité d\'esprit au quotidien.',
     points: [
-      'Cloudflare Pages / Workers global',
-      '+300 points de présence actifs',
-      'Rollback instantané en 1 clic',
+      'Hébergement robuste haute disponibilité',
+      'Sécurité et sauvegardes intégrées',
+      'Accompagnement continu et réactif',
     ],
     metrics: [
-      { label: 'Uptime', value: '99.99', unit: '%' },
-      { label: 'POPs', value: '310', unit: '+' },
-      { label: 'Deploy', value: '<30', unit: 's' },
+      { label: 'Disponibilité', value: '99.9', unit: '%' },
+      { label: 'Accès', value: '24/7', unit: '' },
+      { label: 'Fiabilité', value: 'Max', unit: '' },
     ],
   },
 ];
@@ -56,34 +56,34 @@ const pillars = [
 const process = [
   {
     num: '01',
-    title: 'Discovery',
-    desc: 'Cartographie de vos enjeux métier et contraintes techniques. Rien n\'est codé avant que l\'architecture soit validée ensemble.',
+    title: 'Écoute & Cadrage',
+    desc: 'Nous échangeons sur vos attentes, votre métier et vos objectifs afin de définir ensemble la solution la plus adaptée.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-6-6 6 6 0 016 6z" />',
   },
   {
     num: '02',
-    title: 'Blueprint',
-    desc: 'Modélisation des données, choix de stack, contrat d\'API. Un plan solide avant la première ligne de code.',
+    title: 'Conception claire',
+    desc: 'Organisation du projet, parcours utilisateur et choix techniques : tout est validé avec vous avant de démarrer.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6M9 8h6M5 4h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z" />',
   },
   {
     num: '03',
-    title: 'Build',
-    desc: 'Développement itératif, démos régulières, transparence totale. Pas de surprise en fin de sprint.',
+    title: 'Réalisation',
+    desc: 'Développement étape par étape avec des présentations régulières pour suivre les avancées en toute sérénité.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />',
   },
   {
     num: '04',
-    title: 'Deploy',
-    desc: 'Mise en production, monitoring, documentation. Vous gardez le contrôle total de votre outil.',
+    title: 'Lancement & Suivi',
+    desc: 'Mise en ligne soignée, vérifications complètes et accompagnement pour que vous preniez facilement en main votre outil.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />',
   },
 ];
 ---
 
 <Layout
-  title="Philosophie Zero-Overhead"
-  description="Ma philosophie de développement : zéro compromis sur la performance, la lisibilité et l'expérience utilisateur. Code propre, architecture intentionnelle."
+  title="Notre Vision & Méthode"
+  description="Des services web et applicatifs rapides, stables et développés en parfaite écoute de vos attentes."
 >
   <!-- ═══ HERO : TITRE DECODE ═══ -->
   <section class="relative min-h-screen w-full flex flex-col items-center justify-center px-6 bg-slate-950 overflow-hidden">
@@ -95,22 +95,22 @@ const process = [
 
     <div class="relative z-10 text-center max-w-5xl mx-auto space-y-8">
       <span class="inline-block text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400 border border-emerald-500/20 rounded-full px-5 py-2 bg-emerald-500/5">
-        Manifeste NeuralCraft
+        Notre Vision
       </span>
 
       <h1 class="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95]">
-        <span data-scramble>L'ingénierie,</span><br />
-        <span data-scramble class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">sans compromis.</span>
+        <span data-scramble>Des services fiables,</span><br />
+        <span data-scramble class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">pensés pour vos besoins.</span>
       </h1>
 
       <p class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
-        Chaque décision technique est pesée. Chaque abstraction a un coût. Je construis des systèmes qui restent{" "}
-        <span class="text-emerald-400 font-semibold">rapides, lisibles et maintenables</span> — même dans 3 ans.
+        Fournir des solutions <span class="text-emerald-400 font-semibold">rapides, stables et faciles d'utilisation</span>,
+        en parfaite écoute de vos attentes métiers. Pas de jargon inutile, juste des outils efficaces qui font la différence.
       </p>
     </div>
 
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
-      <span class="text-[10px] font-mono uppercase tracking-widest">Explorer</span>
+      <span class="text-[10px] font-mono uppercase tracking-widest">Découvrir</span>
       <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
       </svg>
@@ -121,20 +121,20 @@ const process = [
   <section class="relative py-20 md:py-28 px-6 bg-slate-900/40 border-y border-slate-900">
     <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-slate-800/60 border border-slate-800/60 rounded-2xl overflow-hidden scroll-reveal">
       <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
-        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">3⁠+</div>
-        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">années d'exp.</div>
-      </div>
-      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
         <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">100%</div>
         <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">sur-mesure</div>
       </div>
       <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
         <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">&lt;0.5s</div>
-        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">LCP moyen</div>
+        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">temps de réponse</div>
+      </div>
+      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
+        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">99.9%</div>
+        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">disponibilité</div>
       </div>
       <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
         <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">∞</div>
-        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">scalabilité</div>
+        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">évolutivité</div>
       </div>
     </div>
   </section>
@@ -163,13 +163,13 @@ const process = [
       <div id="h-track" class="flex items-center gap-6 md:gap-10 pl-[8vw] pr-[14vw] will-change-transform">
         <!-- Carte intro -->
         <div class="shrink-0 w-[85vw] sm:w-[60vw] lg:w-[30vw] flex flex-col justify-center space-y-6">
-          <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">La doctrine</span>
+          <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">Nos engagements</span>
           <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[0.95]">
-            Une doctrine,<br />
-            <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">trois lois.</span>
+            Une vision claire,<br />
+            <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">trois priorités.</span>
           </h2>
           <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-            Continuez à scroller : la page pivote. Chaque loi est non négociable.
+            Faire simple, fluide et solide pour que vous puissiez vous concentrer pleinement sur votre cœur de métier.
           </p>
         </div>
 
@@ -224,13 +224,13 @@ const process = [
   <section class="relative z-20 py-24 md:py-32 px-6 bg-slate-950 border-t border-slate-900 overflow-hidden">
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-16 md:mb-24 scroll-reveal">
-        <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">Méthodologie</span>
+        <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">Méthode de travail</span>
         <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter">
-          Un process{" "}
+          Un accompagnement{" "}
           <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">transparent</span>
         </h2>
         <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">
-          Pas de boîte noire. Vous savez toujours où nous en sommes, ce qui a été livré, et ce qui arrive.
+          De la première prise de contact à la mise en ligne, vous suivez l'avancement pas à pas, sans jargon technique et sans surprise.
         </p>
       </div>
 
@@ -271,28 +271,31 @@ const process = [
 
     <div class="relative z-10 text-center max-w-3xl mx-auto space-y-8 scroll-reveal">
       <span class="inline-block text-[10px] font-mono uppercase tracking-[0.25em] text-emerald-400/80 border border-emerald-500/20 rounded-full px-4 py-1.5 bg-emerald-500/5">
-        Prêt à collaborer ?
+        Échangeons ensemble
       </span>
 
       <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-none">
-        Une idée{" "}
-        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">ambitieuse</span>
-        <br />en tête ?
+        Vous avez un projet{" "}
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">en tête ?</span>
       </h2>
 
       <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-        Pas de commercial, pas de blabla — juste un échange technique franc entre ingénieurs.
+        Discutons simplement de vos besoins pour voir comment nous pouvons vous aider à concevoir une solution stable, rapide et efficace.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-        <a href="mailto:contact@neuralcraft.fr" class="btn-premium-primary group">
+        <button
+          type="button"
+          data-open-contact
+          class="btn-premium-primary group cursor-pointer"
+        >
           <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
           </svg>
           <span>Démarrer la conversation</span>
-        </a>
+        </button>
         <a href="/services" class="btn-premium-secondary group">
-          <span>Revoir les services</span>
+          <span>Découvrir les services</span>
           <svg class="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
@@ -316,36 +319,71 @@ const process = [
   </style>
 
   <script>
-    // ── TITRE DECODE ────────────────────────────────
-    const SCRAMBLE_CHARS = "!<>-_\\/[]{}—=+*^?#";
+    // ── TITRE DECODE FLUIDE SANS SAUT DE PAGE ────────
+    const SCRAMBLE_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789*+~#-_";
 
-    function scrambleEl(el: HTMLElement, delay = 0) {
-      const original = el.dataset.original || el.textContent || "";
-      el.dataset.original = original;
-      const total = Math.max(24, original.length * 3);
-      let frame = 0;
+    function scrambleEl(el: HTMLElement, startDelay = 0) {
+      const originalText = el.dataset.original || el.textContent?.trim() || "";
+      el.dataset.original = originalText;
+      if (!originalText) return;
+
+      // Découpage par mot pour garantir qu'aucun mot ne se coupe et ne change la hauteur
+      const words = originalText.split(" ");
+      el.innerHTML = words
+        .map((word) => {
+          const chars = word
+            .split("")
+            .map(
+              (char) =>
+                `<span class="scramble-char inline-block" data-char="${char}">${char}</span>`
+            )
+            .join("");
+          return `<span class="inline-block whitespace-nowrap">${chars}</span>`;
+        })
+        .join(" ");
+
+      const charSpans = Array.from(el.querySelectorAll<HTMLSpanElement>(".scramble-char"));
+      if (charSpans.length === 0) return;
 
       setTimeout(() => {
-        const tick = () => {
-          frame++;
-          const progress = frame / total;
-          let out = "";
-          for (let i = 0; i < original.length; i++) {
-            if (original[i] === " ") { out += " "; continue; }
-            if (i / original.length < progress) out += original[i];
-            else out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-          }
-          el.textContent = out;
-          if (frame < total) requestAnimationFrame(tick);
-          else el.textContent = original;
-        };
-        tick();
-      }, delay);
+        charSpans.forEach((span, index) => {
+          const targetChar = span.dataset.char || "";
+          if (!targetChar) return;
+
+          const letterDelay = index * 35; // Cascade fluide de gauche à droite
+          const scrambleDuration = 320;   // Durée de permutation par lettre
+          const startTime = performance.now() + letterDelay;
+          let lastChange = 0;
+
+          const tick = (now: number) => {
+            if (now < startTime) {
+              requestAnimationFrame(tick);
+              return;
+            }
+
+            const elapsed = now - startTime;
+            if (elapsed < scrambleDuration) {
+              // On permute le caractère à un rythme doux (~55ms) pour éviter les scintillements violents
+              if (now - lastChange > 55) {
+                span.textContent = SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+                span.style.opacity = "0.75";
+                lastChange = now;
+              }
+              requestAnimationFrame(tick);
+            } else {
+              span.textContent = targetChar;
+              span.style.opacity = "1";
+            }
+          };
+
+          requestAnimationFrame(tick);
+        });
+      }, startDelay);
     }
 
     function initScramble() {
       document.querySelectorAll<HTMLElement>("[data-scramble]").forEach((el, i) => {
-        scrambleEl(el, 250 + i * 350);
+        scrambleEl(el, 200 + i * 250);
       });
     }
 

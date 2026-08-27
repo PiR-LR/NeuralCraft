@@ -1,0 +1,113 @@
+---
+// src/pages/mentions-legales.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Mentions Légales & Confidentialité"
+  description="Mentions légales, informations sur l'éditeur, hébergement et politique de confidentialité du site NeuralCraft."
+>
+  <div class="min-h-screen py-16 px-6 sm:px-8 max-w-4xl mx-auto space-y-12">
+    
+    <!-- Header de page -->
+    <div class="space-y-4 pt-6 border-b border-slate-800/80 pb-8">
+      <span class="inline-block text-xs font-mono uppercase tracking-widest px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        Informations Légales
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-100 font-heading">
+        Mentions Légales & <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Confidentialité</span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+        Conformément aux dispositions des articles 6-III et 19 de la loi n° 2004-575 du 21 juin 2004 pour la Confiance dans l’Économie Numérique (L.C.E.N.) et au RGPD.
+      </p>
+    </div>
+
+    <!-- Contenu des mentions -->
+    <div class="space-y-8 text-slate-300 text-sm sm:text-base leading-relaxed font-sans">
+
+      <!-- 1. Éditeur du site -->
+      <section class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-heading flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          1. Éditeur du site
+        </h2>
+        <div class="space-y-2 text-slate-300 pl-5 border-l-2 border-slate-800">
+          <p><strong class="text-slate-100">Nom commercial :</strong> NeuralCraft</p>
+          <p><strong class="text-slate-100">Statut juridique :</strong> Entreprise Individuelle / Micro-entreprise</p>
+          <p><strong class="text-slate-100">Immatriculation (SIRET) :</strong> En cours d'immatriculation (RCS / URSSAF)</p>
+          <p><strong class="text-slate-100">Email de contact :</strong> <a href="mailto:contact@neuralcraft.fr" class="text-emerald-400 hover:underline">contact@neuralcraft.fr</a></p>
+          <p><strong class="text-slate-100">Directeur de la publication :</strong> NeuralCraft</p>
+        </div>
+      </section>
+
+      <!-- 2. Hébergement & Nom de domaine -->
+      <section class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-heading flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          2. Hébergement & Nom de domaine
+        </h2>
+        <div class="space-y-3 pl-5 border-l-2 border-slate-800">
+          <div>
+            <p><strong class="text-slate-100">Hébergement Web (Edge CDN) :</strong></p>
+            <p class="text-slate-400">Cloudflare, Inc. — 101 Townsend St, San Francisco, CA 94107, USA</p>
+            <p class="text-slate-400 text-xs font-mono">Site web : <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">https://www.cloudflare.com</a></p>
+          </div>
+          <div class="pt-2">
+            <p><strong class="text-slate-100">Enregistrement du nom de domaine (Registrar) :</strong></p>
+            <p class="text-slate-400">Infomaniak Network SA — Rue Eugène-Marziano 25, 1227 Les Acacias, Genève, Suisse</p>
+            <p class="text-slate-400 text-xs font-mono">Site web : <a href="https://www.infomaniak.com" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">https://www.infomaniak.com</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Propriété intellectuelle -->
+      <section class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-heading flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          3. Propriété intellectuelle
+        </h2>
+        <p class="text-slate-400 leading-relaxed pl-5 border-l-2 border-slate-800">
+          L’ensemble des contenus présents sur le site <span class="text-slate-200 font-medium">neuralcraft.fr</span> (architecture, textes, logos, animations, code source, graphismes et éléments interactifs) est la propriété exclusive de NeuralCraft, sauf mention contraire explicite. Toute reproduction, distribution ou modification, totale ou partielle, sans autorisation écrite préalable est strictement interdite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.
+        </p>
+      </section>
+
+      <!-- 4. Données personnelles & RGPD -->
+      <section class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-heading flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          4. Données personnelles (RGPD)
+        </h2>
+        <div class="space-y-3 text-slate-400 leading-relaxed pl-5 border-l-2 border-slate-800">
+          <p>
+            Les informations recueillies via le formulaire de contact ou par messagerie directe sont uniquement destinées au traitement de votre demande de renseignement ou de devis.
+          </p>
+          <ul class="list-disc list-inside space-y-1 text-slate-300">
+            <li><strong class="text-slate-200">Finalité :</strong> Répondre à vos demandes et assurer le suivi commercial.</li>
+            <li><strong class="text-slate-200">Non-transmission :</strong> Vos données ne sont jamais vendues, louées ou cédées à des tiers.</li>
+            <li><strong class="text-slate-200">Vos droits :</strong> Conformément au Règlement Général sur la Protection des Données (RGPD), vous bénéficiez d’un droit d’accès, de rectification et de suppression de vos données en envoyant un e-mail à <a href="mailto:contact@neuralcraft.fr" class="text-emerald-400 hover:underline font-mono">contact@neuralcraft.fr</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5. Absence de cookies publicitaires -->
+      <section class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-100 font-heading flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+          5. Cookies & Vie privée
+        </h2>
+        <p class="text-slate-400 leading-relaxed pl-5 border-l-2 border-slate-800">
+          Le site <span class="text-slate-200 font-medium">neuralcraft.fr</span> n'utilise aucun cookie de ciblage publicitaire ni traceur intrusif. La navigation s'effectue dans le respect total de votre vie privée, sans nécessité de bandeau de consentement tiers.
+        </p>
+      </section>
+
+    </div>
+
+    <!-- Retour Accueil -->
+    <div class="pt-6 text-center">
+      <a href="/" class="btn-cyber-secondary">
+        <span>&larr; Retour à l'accueil</span>
+      </a>
+    </div>
+
+  </div>
+</Layout>

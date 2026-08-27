@@ -37,11 +37,11 @@ const coreServices = [
 ---
 
 <Layout
-  title="Expertise & Solutions Fullstack"
-  description="Conception de webapps sur-mesure, architectures distribuées, interfaces temps réel. Expertise Next.js, Supabase, Framer Motion — exécution sans compromis."
+  title="Nos Services & Solutions Digitales"
+  description="Conception de sites vitrines modernes, webapps métiers et optimisation de performances. Des solutions stables, rapides et adaptées à vos objectifs."
 >
 
-  <div class="relative w-full md:min-h-[450vh]" id="scroll-container">
+  <div class="relative w-full md:min-h-[420vh]" id="scroll-container">
 
     <!-- ═══ HERO MOBILE (statique, scroll normal) ═══ -->
     <div class="md:hidden px-6 pt-14 pb-10 text-center space-y-6">
@@ -49,38 +49,12 @@ const coreServices = [
         Ingénierie & Valeur Ajoutée
       </span>
       <h1 class="text-4xl font-extrabold tracking-tight leading-[1.1]">
-        Transformez vos besoins complexes en{" "}
+        Transformez vos besoins complexes en <br/>
         <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Webapps d'Exception.</span>
       </h1>
       <p class="text-slate-400 text-base leading-relaxed">
         Du calcul métier distribué à la synchronisation temps réel, je conçois des architectures sur-mesure taillées pour la scalabilité et l'expérience utilisateur ultime.
       </p>
-    </div>
-
-    <!-- ═══ HERO DESKTOP (fixed, piloté par le script) ═══ -->
-    <div
-      id="hero-box"
-      class="hidden md:flex md:fixed left-1/2 w-full max-w-6xl px-6 z-40 text-center flex-col items-center pointer-events-none transition-all duration-700 ease-out origin-top"
-      style="top: 100px; transform: translate(-50%, calc(35vh - 100px)) scale(1);"
-    >
-      <div id="hero-badge" class="transition-opacity duration-500 mb-6">
-        <span class="inline-block text-xs font-mono uppercase tracking-widest px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-          Ingénierie & Valeur Ajoutée
-        </span>
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] w-full" id="hero-title">
-        Transformez vos besoins complexes en <br />
-        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Webapps d'Exception.</span>
-      </h1>
-
-      <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto font-normal leading-relaxed mt-6 transition-opacity duration-500" id="hero-subtitle">
-        Du calcul métier distribué à la synchronisation temps réel, je conçois des architectures sur-mesure taillées pour la scalabilité et l'expérience utilisateur ultime.
-      </p>
-
-      <div class="pt-8 animate-bounce transition-opacity duration-500" id="hero-scroll-hint">
-        <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500">Défiler pour explorer</span>
-      </div>
     </div>
 
     <!-- ═══ CARTES MOBILE (flux vertical normal) ═══ -->
@@ -118,29 +92,60 @@ const coreServices = [
             ))}
           </div>
 
-          <a href="#contact-section" class="btn-cyber-secondary w-full relative z-10">
+          <button
+            type="button"
+            data-open-contact
+            class="btn-cyber-secondary w-full relative z-10 cursor-pointer"
+          >
             <span>Étudier ce besoin</span>
             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
-          </a>
+          </button>
         </article>
       ))}
     </div>
 
-    <!-- ═══ CARTES DESKTOP (fixed, switch au scroll) ═══ -->
-    <div id="cards-zone" class="hidden md:block md:fixed top-[30vh] left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-30 pointer-events-none">
+    <!-- ═══ HERO DESKTOP UNIQUE (fixe, transitionne vers le haut au scroll) ═══ -->
+    <div
+      id="hero-box"
+      class="hidden md:flex md:fixed left-1/2 w-full max-w-6xl px-6 z-40 text-center flex-col items-center pointer-events-none transition-all duration-700 ease-out origin-top"
+      style="top: 85px; transform: translate(-50%, calc(35vh - 85px)) scale(1);"
+    >
+      <div id="hero-badge" class="transition-opacity duration-500 mb-6">
+        <span class="inline-block text-xs font-mono uppercase tracking-widest px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          Ingénierie & Valeur Ajoutée
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] w-full" id="hero-title">
+        Transformez vos besoins complexes en <br/>
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Webapps d'Exception.</span>
+      </h1>
+
+      <p class="text-slate-400 text-base md:text-xl max-w-3xl mx-auto font-normal leading-relaxed mt-6 transition-opacity duration-500" id="hero-subtitle">
+        Du calcul métier distribué à la synchronisation temps réel, je conçois des architectures sur-mesure taillées pour la scalabilité et l'expérience utilisateur ultime.
+      </p>
+
+      <div class="pt-8 animate-bounce transition-opacity duration-500" id="hero-scroll-hint">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-slate-500">Défiler pour explorer</span>
+      </div>
+    </div>
+
+    <!-- ═══ ZONE DES CARTES DESKTOP (z-30) : Placée sous le titre sans mordre dessus ═══ -->
+    <div id="cards-zone" class="hidden md:block md:fixed top-[32vh] lg:top-[34vh] left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-30 pointer-events-none">
       {coreServices.map((service) => (
-        <div
+        <div 
           id={service.id}
           class="service-card absolute left-0 right-0 mx-6 bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl transition-all duration-700 ease-out opacity-0 translate-y-16 pointer-events-none"
         >
+          <!-- Filigrane Numéro -->
           <div class="absolute -right-4 -bottom-8 text-9xl font-extrabold text-slate-800/30 select-none font-mono pointer-events-none">
             {service.num}
           </div>
 
           <div class="flex flex-col lg:flex-row gap-8 justify-between items-start relative z-10">
-
+            
             <div class="space-y-5 max-w-2xl">
               <div class="space-y-1.5">
                 <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">{service.badge}</span>
@@ -171,12 +176,16 @@ const coreServices = [
                 ))}
               </div>
 
-              <a href="#contact-section" class="btn-cyber-secondary w-full lg:w-auto pointer-events-auto">
+              <button
+                type="button"
+                data-open-contact
+                class="btn-cyber-secondary w-full lg:w-auto pointer-events-auto cursor-pointer"
+              >
                 <span>Étudier ce besoin</span>
                 <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
-              </a>
+              </button>
             </div>
 
           </div>
@@ -186,42 +195,53 @@ const coreServices = [
 
   </div>
 
-  <!-- SECTION CONTACT FINALE -->
-  <section
-    id="contact-section"
-    class="relative z-50 min-h-screen flex items-center justify-center px-6 py-24 overflow-hidden border-t border-slate-900 bg-slate-950"
-  >
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+  <!-- ═══ SECTION CONTACT FINALE (Plein écran centré) ═══ -->
+  <section id="contact-section" class="relative z-50 min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden border-t border-slate-900 bg-slate-950">
+    <div class="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full pointer-events-none"></div>
 
-    <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+    <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10 -translate-y-6 md:translate-y-0">
       <div class="space-y-4">
         <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Prêt pour le niveau supérieur ?</span>
-        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight">Un projet d'envergure en vue ?</h2>
-        <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto font-normal">
+        <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-slate-100">
+          Un projet d'envergure en vue ?
+        </h2>
+        <p class="text-slate-400 text-base md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
           Parlons de votre architecture, de vos contraintes techniques et de vos objectifs métiers.
         </p>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
-        <a href="mailto:contact@neuralcraft.fr" class="btn-cyber-primary w-full sm:w-auto">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-6">
+        <button
+          type="button"
+          data-open-contact
+          class="btn-cyber-primary w-full sm:w-auto cursor-pointer group"
+        >
+          <svg class="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
           </svg>
           <span>Concevoir votre Webapp</span>
-        </a>
-        <a href="/projets" class="btn-cyber-secondary w-full sm:w-auto">
-          <span>Voir Paneum & Lupycha</span>
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </button>
+
+        <a href="/projets" class="btn-cyber-secondary w-full sm:w-auto group">
+          <span>Nos réalisations</span>
+          <svg class="w-5 h-5 text-emerald-400 group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- SCRIPT (desktop uniquement) -->
+  <!-- ═══ SCRIPT PROPRE ET FIABLE ═══ -->
   <script>
+    let servicesScrollCleanup: (() => void) | null = null;
+
     function initCleanServicesScroll() {
+      if (servicesScrollCleanup) {
+        servicesScrollCleanup();
+        servicesScrollCleanup = null;
+      }
+
       const isMobile = () => window.innerWidth < 768;
 
       const heroBox = document.getElementById('hero-box');
@@ -236,39 +256,54 @@ const coreServices = [
       ];
 
       function onScroll() {
-        // Sur mobile, tout est statique : rien à piloter
         if (isMobile()) return;
 
         const scrollY = window.scrollY;
         const vh = window.innerHeight;
 
+        // 1. GESTION DU TITRE : Toggle via CSS Transform (Garantit 2 lignes et place fixe à 85px)
         if (scrollY > 50) {
-          if (heroBox) heroBox.style.transform = 'translate(-50%, 0) scale(0.65)';
+          if (heroBox) {
+            heroBox.style.transform = 'translate(-50%, 0) scale(0.65)';
+            heroBox.style.opacity = scrollY > vh * 2.8 ? '0' : '1';
+          }
           if (heroBadge) heroBadge.style.opacity = '0';
           if (heroSubtitle) heroSubtitle.style.opacity = '0';
           if (heroScrollHint) heroScrollHint.style.opacity = '0';
         } else {
-          if (heroBox) heroBox.style.transform = 'translate(-50%, calc(35vh - 100px)) scale(1)';
+          // Centrage initial calculé
+          if (heroBox) {
+            heroBox.style.transform = 'translate(-50%, calc(35vh - 85px)) scale(1)';
+            heroBox.style.opacity = '1';
+          }
           if (heroBadge) heroBadge.style.opacity = '1';
           if (heroSubtitle) heroSubtitle.style.opacity = '1';
           if (heroScrollHint) heroScrollHint.style.opacity = '1';
         }
 
+        // 2. APPARITION DES CARTES
         const step1 = vh * 0.4;
         const step2 = vh * 1.4;
         const step3 = vh * 2.4;
+        const exitStep = vh * 3.3;
 
         cards.forEach((card) => {
           if (card) {
             card.classList.add('opacity-0', 'translate-y-16');
             card.classList.remove('opacity-100', 'translate-y-0');
-            card.style.pointerEvents = 'none';
+            card.style.pointerEvents = 'none'; 
           }
         });
 
-        if (scrollY >= step3) showCard(cards[2]);
-        else if (scrollY >= step2) showCard(cards[1]);
-        else if (scrollY >= step1) showCard(cards[0]);
+        if (scrollY >= exitStep) {
+          // Sortie douce quand le CTA final arrive
+        } else if (scrollY >= step3) {
+          showCard(cards[2]);
+        } else if (scrollY >= step2) {
+          showCard(cards[1]);
+        } else if (scrollY >= step1) {
+          showCard(cards[0]);
+        }
       }
 
       function showCard(card: HTMLElement | null) {
@@ -280,10 +315,17 @@ const coreServices = [
       }
 
       window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      window.addEventListener('resize', onScroll);
+      onScroll(); // Force l'état initial
+
+      servicesScrollCleanup = () => {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      };
     }
 
     initCleanServicesScroll();
     document.addEventListener('astro:after-swap', initCleanServicesScroll);
   </script>
+
 </Layout>
