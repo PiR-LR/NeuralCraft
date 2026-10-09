@@ -4,85 +4,52 @@ import Layout from '../layouts/Layout.astro';
 
 const pillars = [
   {
-    step: '01',
-    title: 'Clarté & Simplicité',
-    kicker: 'L\'essentiel, sans détour',
-    desc: 'Pas de complexité inutile ni de fonctionnalités superflues. Chaque ligne et chaque écran répondent précisément à vos objectifs métiers, pour des outils simples à prendre en main et faciles à faire évoluer.',
-    points: [
-      'Interfaces intuitives et pensées pour vos utilisateurs',
-      'Solutions pérennes et simples à maintenir',
-      'Structure propre sans usines à gaz',
-    ],
-    metrics: [
-      { label: 'Prise en main', value: '100', unit: '%' },
-      { label: 'Dette technique', value: '0', unit: '' },
-      { label: 'Lisibilité', value: 'A+', unit: '' },
-    ],
+    step: '01', title: 'Comprendre votre besoin', kicker: 'Partir de votre activité',
+    desc: 'Nous parlons de votre activité, de votre public et de ce que votre site doit permettre de faire. Cela aide à définir un projet utile et un périmètre clair.',
+    points: ['Un objectif défini ensemble', 'Des fonctionnalités utiles', 'Des choix expliqués simplement'],
   },
   {
-    step: '02',
-    title: 'Vitesse & Fluidité',
-    kicker: 'Une navigation instantanée',
-    desc: 'La rapidité met immédiatement vos clients en confiance et améliore votre référencement. Vos pages et applications s\'affichent en une fraction de seconde sur mobile comme sur ordinateur.',
-    points: [
-      'Temps de chargement ultra-court (< 0.5s)',
-      'Navigation instantanée et sans accroc',
-      'Optimisation soignée pour le référencement (SEO)',
-    ],
-    metrics: [
-      { label: 'Affichage moyen', value: '<0.5', unit: 's' },
-      { label: 'Performance', value: '100', unit: '/100' },
-      { label: 'Mobile', value: 'Top', unit: '' },
-    ],
+    step: '02', title: 'Soigner le résultat', kicker: 'Le fond et la forme',
+    desc: 'Je travaille le design, la lisibilité et la navigation pour que vos visiteurs comprennent votre offre et trouvent facilement ce qu’ils cherchent.',
+    points: ['Une identité visuelle cohérente', 'Des pages adaptées au mobile', 'Une attention portée au chargement'],
   },
   {
-    step: '03',
-    title: 'Stabilité & Sérénité',
-    kicker: 'Toujours opérationnel',
-    desc: 'Vos outils et sites restent disponibles 24h/24 en toute sécurité. Des sauvegardes régulières, une infrastructure moderne et une tranquillité d\'esprit au quotidien.',
-    points: [
-      'Hébergement robuste haute disponibilité',
-      'Sécurité et sauvegardes intégrées',
-      'Accompagnement continu et réactif',
-    ],
-    metrics: [
-      { label: 'Disponibilité', value: '99.9', unit: '%' },
-      { label: 'Accès', value: '24/7', unit: '' },
-      { label: 'Fiabilité', value: 'Max', unit: '' },
-    ],
+    step: '03', title: 'Avancer ensemble', kicker: 'Un interlocuteur direct',
+    desc: 'Vous échangez directement avec moi et voyez le projet avancer. Nous faisons le point aux étapes clés avant la mise en ligne.',
+    points: ['Des présentations au fil du projet', 'Vos retours pris en compte', 'Une mise en ligne préparée ensemble'],
   },
 ];
 
 const process = [
   {
     num: '01',
-    title: 'Écoute & Cadrage',
-    desc: 'Nous échangeons sur vos attentes, votre métier et vos objectifs afin de définir ensemble la solution la plus adaptée.',
+    title: 'Premier échange',
+    desc: 'Nous définissons vos besoins, les pages ou fonctionnalités à prévoir et le périmètre du projet.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-6-6 6 6 0 016 6z" />',
   },
   {
     num: '02',
-    title: 'Conception claire',
-    desc: 'Organisation du projet, parcours utilisateur et choix techniques : tout est validé avec vous avant de démarrer.',
+    title: 'Conception',
+    desc: 'Je vous propose une structure et une direction visuelle. Nous les ajustons ensemble.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6M9 8h6M5 4h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z" />',
   },
   {
     num: '03',
     title: 'Réalisation',
-    desc: 'Développement étape par étape avec des présentations régulières pour suivre les avancées en toute sérénité.',
+    desc: 'Je développe le site et vous présente les avancées pour recueillir vos retours.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />',
   },
   {
     num: '04',
-    title: 'Lancement & Suivi',
-    desc: 'Mise en ligne soignée, vérifications complètes et accompagnement pour que vous preniez facilement en main votre outil.',
+    title: 'Mise en ligne',
+    desc: 'Nous vérifions le résultat avant la publication et faisons le point sur la prise en main.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />',
   },
 ];
 ---
 
 <Layout
-  title="Notre Vision & Méthode"
+  title="Ma façon de travailler"
   description="Des services web et applicatifs rapides, stables et développés en parfaite écoute de vos attentes."
 >
   <!-- ═══ HERO : TITRE DECODE ═══ -->
@@ -95,17 +62,18 @@ const process = [
 
     <div class="relative z-10 text-center max-w-5xl mx-auto space-y-8">
       <span class="inline-block text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400 border border-emerald-500/20 rounded-full px-5 py-2 bg-emerald-500/5">
-        Notre Vision
+        Mon approche
       </span>
 
       <h1 class="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tighter leading-[0.95]">
-        <span data-scramble>Des services fiables,</span><br />
-        <span data-scramble class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">pensés pour vos besoins.</span>
+        <span data-scramble>Un projet clair,</span><br />
+        <span data-scramble class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">construit avec vous.</span>
       </h1>
 
       <p class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed">
-        Fournir des solutions <span class="text-emerald-400 font-semibold">rapides, stables et faciles d'utilisation</span>,
-        en parfaite écoute de vos attentes métiers. Pas de jargon inutile, juste des outils efficaces qui font la différence.
+        Je prends le temps de comprendre votre activité pour créer
+        <span class="text-emerald-400 font-semibold"> un site ou une application qui répond à vos besoins</span>.
+        Vous échangez directement avec moi à chaque étape.
       </p>
     </div>
 
@@ -114,28 +82,6 @@ const process = [
       <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
       </svg>
-    </div>
-  </section>
-
-  <!-- ═══ STATS ═══ -->
-  <section class="relative py-20 md:py-28 px-6 bg-slate-900/40 border-y border-slate-900">
-    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-slate-800/60 border border-slate-800/60 rounded-2xl overflow-hidden scroll-reveal">
-      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
-        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">100%</div>
-        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">sur-mesure</div>
-      </div>
-      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
-        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">&lt;0.5s</div>
-        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">temps de réponse</div>
-      </div>
-      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
-        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">99.9%</div>
-        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">disponibilité</div>
-      </div>
-      <div class="bg-slate-950 p-6 md:p-10 text-center group hover:bg-slate-900 transition-colors">
-        <div class="text-4xl md:text-6xl font-extrabold text-emerald-400 tabular-nums group-hover:scale-110 transition-transform">∞</div>
-        <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider mt-2">évolutivité</div>
-      </div>
     </div>
   </section>
 
@@ -163,13 +109,13 @@ const process = [
       <div id="h-track" class="flex items-center gap-6 md:gap-10 pl-[8vw] pr-[14vw] will-change-transform">
         <!-- Carte intro -->
         <div class="shrink-0 w-[85vw] sm:w-[60vw] lg:w-[30vw] flex flex-col justify-center space-y-6">
-          <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">Nos engagements</span>
+          <span class="text-[11px] font-mono uppercase tracking-[0.3em] text-emerald-400">Mes priorités</span>
           <h2 class="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[0.95]">
-            Une vision claire,<br />
+            Une façon de travailler,<br />
             <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">trois priorités.</span>
           </h2>
           <p class="text-slate-400 text-sm md:text-base leading-relaxed">
-            Faire simple, fluide et solide pour que vous puissiez vous concentrer pleinement sur votre cœur de métier.
+            Comprendre votre besoin, soigner le résultat et vous tenir au courant.
           </p>
         </div>
 
@@ -203,16 +149,7 @@ const process = [
                 ))}
               </ul>
 
-              <div class="flex gap-6 md:gap-8 pt-4 border-t border-slate-800/60">
-                {item.metrics.map((m) => (
-                  <div>
-                    <div class="text-xl md:text-3xl font-extrabold text-emerald-400 tabular-nums">
-                      {m.value}<span class="text-xs md:text-sm text-emerald-400/60 font-mono ml-0.5">{m.unit}</span>
-                    </div>
-                    <div class="text-[9px] md:text-[10px] text-slate-500 uppercase tracking-wider font-mono mt-1">{m.label}</div>
-                  </div>
-                ))}
-              </div>
+
             </div>
           </article>
         ))}
@@ -230,7 +167,7 @@ const process = [
           <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">transparent</span>
         </h2>
         <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto">
-          De la première prise de contact à la mise en ligne, vous suivez l'avancement pas à pas, sans jargon technique et sans surprise.
+          Vous savez ce qui est prévu et voyez le résultat prendre forme, étape par étape.
         </p>
       </div>
 
@@ -280,7 +217,7 @@ const process = [
       </h2>
 
       <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-        Discutons simplement de vos besoins pour voir comment nous pouvons vous aider à concevoir une solution stable, rapide et efficace.
+        Parlez-moi de votre activité, de votre idée ou de votre site actuel. Nous verrons ensemble comment avancer.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
