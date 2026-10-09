@@ -3,43 +3,44 @@
 import Layout from "../layouts/Layout.astro";
 
 const projects = [
-
   {
-    title: "LUPYCHA",
-    category: "Ludopédagogie RH",
-    description:
-      "LUPYCHA est une entreprise française spécialisée dans la ludopédagogie au service des Ressources Humaines, du management et du développement des compétences.",
-    techs: [
-      "Next.js",
-      "React",
-      "CSS Modules",
-      "Framer Motion",
-      "NextAuth.js",
-      "MongoDB",
-      "Socket.io",
-      "Render",
-    ],
-    status: "Actif",
+    title: "LUPYCHA", category: "Application web · Ludopédagogie", status: "Réalisation",
+    need: "Créer et animer des expériences pédagogiques interactives.",
+    description: "Une plateforme collaborative avec des interactions synchronisées entre animateurs et participants.",
+    features: ["Création de sessions", "Gestion des participants", "Interactions en temps réel", "Administration"],
+    techs: ["Next.js", "MongoDB", "Socket.io"],
   },
   {
-    title: "N-Icons",
-    category: "Lab Project",
-    description:
-      "N-Icons est une bibliothèque d'icônes SVG interactive et animée pour vos projets web.",
-    techs: ["Astro", "SVG", "SVG Animation"],
-    status: "Actif",
+    title: "ALEMA", category: "Plateforme associative", status: "Réalisation",
+    need: "Présenter une association et gérer la vie de ses membres.",
+    description: "Un site public associé à un espace membres et une interface d’administration pour centraliser la gestion de l’association.",
+    features: ["Espace membres", "Administration", "Gestion de données", "Emailing"],
+    techs: [],
+  },
+  {
+    title: "Anaïs Touret", category: "Site vitrine · Naturopathie", status: "Réalisation",
+    need: "Présenter une activité de naturopathe et ses accompagnements.",
+    description: "Une vitrine professionnelle qui donne une place claire à l’activité et aux informations utiles aux visiteurs.",
+    features: ["Présentation de l’activité", "Présentation des accompagnements"],
+    techs: ["Cloudflare Pages"], url: "https://anaistouret-naturopathe.pages.dev",
+  },
+  {
+    title: "N-Icons", category: "Exploration et création", status: "Projet personnel",
+    need: "Explorer les possibilités des icônes interactives et animées sur le web.",
+    description: "Une bibliothèque d’icônes conçue comme un terrain d’expérimentation sur les interactions et l’animation.",
+    features: ["Icônes animées", "Interactions"], techs: ["Astro", "SVG"],
   },
 ];
 ---
 
 <Layout
-  title="Nos Réalisations & Projets Web"
+  title="Réalisations et projets web"
   description="Découvrez les réalisations et projets conçus par NeuralCraft : applications sur-mesure, interfaces réactives et outils modernes pour nos clients."
 >
   {
     projects.map((proj, index) => (
       <section
-        class={`h-screen w-full flex flex-col items-center justify-center snap-start snap-always px-6 text-center ${index % 2 === 0 ? "bg-slate-950" : "bg-slate-900/50"}`}
+        class={`min-h-screen py-20 w-full flex flex-col items-center justify-center snap-start snap-always px-6 text-center ${index % 2 === 0 ? "bg-slate-950" : "bg-slate-900/50"}`}
       >
         <div class="space-y-8 max-w-7xl mx-auto">
           <div class="flex items-center gap-4 justify-center">
@@ -50,20 +51,33 @@ const projects = [
               {proj.status}
             </span>
           </div>
-          <h2 class="text-6xl md:text-9xl font-extrabold tracking-tighter leading-none text-slate-100">
+          <h2 class="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter leading-none text-slate-100">
             {proj.title}
           </h2>
+          <p class="text-slate-200 text-base md:text-xl max-w-3xl mx-auto">{proj.need}</p>
           <p class="text-slate-400 text-lg md:text-3xl max-w-3xl mx-auto font-medium leading-relaxed">
             {proj.description}
           </p>
 
-          <div class="flex flex-wrap gap-2 pt-10 justify-center font-mono">
-            {proj.techs.map((t) => (
-              <span class="text-sm font-bold text-slate-600">#{t}</span>
-            ))}
-          </div>
+          {proj.url && (
+            <a href={proj.url} target="_blank" rel="noopener noreferrer" class="inline-block text-emerald-400 underline underline-offset-4">Visiter le site ↗</a>
+          )}
+          <ul class="flex flex-wrap gap-3 justify-center text-sm text-slate-300">
+            {proj.features.map((feature) => <li class="px-3 py-2 border border-slate-800 rounded-lg">{feature}</li>)}
+          </ul>
+          {proj.techs.length > 0 && (
+            <details class="text-sm text-slate-400">
+              <summary class="cursor-pointer">Détails techniques</summary>
+              <p class="mt-3">{proj.techs.join(' · ')}</p>
+            </details>
+          )}
         </div>
       </section>
     ))
   }
+  <section class="px-6 py-20 text-center border-t border-slate-800">
+    <h2 class="text-2xl font-bold text-slate-100">Projets confidentiels</h2>
+    <p class="text-slate-400 max-w-xl mx-auto mt-4 leading-relaxed">Certains projets ne sont pas présentés ici pour respecter leur confidentialité.</p>
+    <button type="button" data-open-contact class="btn-cyber-secondary mt-6 cursor-pointer">Parlons de votre projet</button>
+  </section>
 </Layout>
