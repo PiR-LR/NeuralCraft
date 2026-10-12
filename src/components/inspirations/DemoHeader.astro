@@ -1,0 +1,29 @@
+---
+import AccordLogo from './AccordLogo.astro';
+import '../../styles/demo-headers.css';
+const { metier, variant, brand } = Astro.props;
+const modes = {comptable:['cabinet','float','ledger'],menuisier:['atelier','signature','dock'],decorateur:['editorial','immersive','tiles']};
+const mode = modes[metier as keyof typeof modes][variant];
+const links = metier==='comptable' ? [{id:'expertises',label:'Expertises'},{id:'cabinet',label:'Le cabinet'},{id:'methode',label:'Notre méthode'}] : [{id:'expertise',label:metier==='menuisier'?'L’atelier':'Le studio'},{id:'projets',label:metier==='menuisier'?'Le savoir-faire':'Les projets'},{id:'contact',label:'Votre projet'}];
+---
+<header class={`dh dh-${mode}`} data-demo-header data-mode={mode}>
+  {mode==='cabinet' && <div class="dh-topline"><span>Comptabilité · Fiscalité · Paie</span><a href="#contact">Votre interlocuteur, toute l’année</a></div>}
+  <div class="dh-main">
+    <a href="#" class="dh-brand" aria-label={`${brand}, accueil`}>
+      {metier==='comptable' ? <AccordLogo/> : <span>{brand}</span>}
+    </a>
+    {(mode==='signature'||mode==='editorial') && <span class="dh-caption">{metier==='menuisier'?'MENUISERIE SUR MESURE':'STUDIO D’INTÉRIEURS'}</span>}
+    <nav class="dh-links" aria-label="Navigation du concept">
+      {links.map((link,index)=><a href={`#${link.id}`} data-section-link={link.id}><span class="dh-index">0{index+1}</span><span>{link.label}</span></a>)}
+    </nav>
+    <a class="dh-contact" href="#contact">{metier==='comptable'?'Prendre rendez-vous':metier==='menuisier'?'Parlons bois':'Faisons connaissance'}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    <button type="button" class="dh-toggle" data-menu-open aria-haspopup="dialog" aria-controls="demo-navigation" aria-expanded="false"><span>{mode==='atelier'?'Explorer':mode==='immersive'?'Découvrir':'Menu'}</span><span class="dh-toggle-lines" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
+  <div class="dh-progress" aria-hidden="true"><span data-reading-progress></span></div>
+</header>
+<dialog id="demo-navigation" class={`dh-dialog dh-dialog-${mode}`} aria-label="Navigation du concept" data-demo-menu>
+  <div class="dh-dialog-top"><span>{brand}</span><button type="button" data-menu-close aria-label="Fermer le menu">Fermer <span aria-hidden="true">×</span></button></div>
+  <div class="dh-dialog-content"><p>{metier==='comptable'?'Votre cabinet, à vos côtés.':metier==='menuisier'?'Tout commence par la matière.':'Un autre regard sur vos espaces.'}</p><nav aria-label="Navigation complète">{links.map((link,index)=><a href={`#${link.id}`}><span>0{index+1}</span>{link.label}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.5"/></svg></a>)}</nav><a class="dh-dialog-contact" href="#contact">{metier==='comptable'?'Échanger avec le cabinet':'Parlons de votre projet'} →</a></div>
+  <div class="dh-dialog-footer">Concept fictif · Création NeuralCraft</div>
+</dialog>
+<noscript><nav class="dh-fallback" aria-label="Navigation">{links.map(link=><a href={`#${link.id}`}>{link.label}</a>)}</nav></noscript>

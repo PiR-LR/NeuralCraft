@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { inspirations } from '../../data/inspirations';
+import '../../styles/inspirations.css';
+export function getStaticPaths(){return inspirations.map(item=>({params:{metier:item.id},props:{item}}));}
+const { item } = Astro.props;
+---
+<Layout title={`${item.label} — Inspirations`} description={item.intro}>
+<div class="config-page" data-configurator data-metier={item.id} data-brand={item.brand} data-directions={JSON.stringify(item.directions)} data-palettes={JSON.stringify(item.palettes)}>
+  <noscript><p>Découvrez les ambiances en ouvrant les démonstrations : {item.directions.map(direction=><a style="margin-inline:12px;text-decoration:underline" href={`/demos/${item.id}/${direction.id}`}>{direction.label}</a>)}</p></noscript>
+  <header class="config-heading"><a href="/inspirations">← Tous les univers</a><div><span class="config-kicker">{item.label} / Concept de démonstration</span><h1>{item.brand}<span>À votre façon.</span></h1><p>{item.intro}</p></div></header>
+  <section class="config-workspace" aria-label="Personnaliser le concept">
+    <aside class="config-controls"><div class="control-title"><span>COMPOSEZ VOTRE UNIVERS</span><span>↗</span></div><fieldset><legend>01 · L’ambiance</legend>{item.directions.map((direction,index)=><button type="button" class="direction-button" data-direction={direction.id} aria-pressed={index===0}><span class="direction-number">0{index+1}</span><span><b>{direction.label}</b><small>{direction.detail}</small></span><span class="direction-check">↗</span></button>)}</fieldset><fieldset><legend>02 · Les couleurs</legend><div class="palette-options">{item.palettes.map((palette,index)=><button type="button" data-palette={palette.id} aria-pressed={index===0} class="palette-button"><span class="swatches">{('swatches' in palette ? palette.swatches : [palette.bg,palette.ink,palette.accent]).map(color=><i style={`background:${color}`}></i>)}</span><span>{palette.label}</span></button>)}</div></fieldset><fieldset class="viewport-options"><legend>03 · Le format</legend><button type="button" data-viewport="desktop" aria-pressed="true">↔ Ordinateur</button><button type="button" data-viewport="mobile" aria-pressed="false">▯ Mobile</button></fieldset><p class="config-note">Chaque ambiance est une composition différente. Cliquez, comparez, trouvez votre point de départ.</p><a class="full-demo btn-premium-primary" href={`/demos/${item.id}/${item.directions[0].id}`} target="_blank" rel="noopener" data-full-demo>Explorer en grand ↗</a><p class="config-status" data-status role="status" aria-live="polite"></p></aside>
+    <div class="preview-stage"><div class="preview-toolbar"><span><i></i><i></i><i></i></span><span data-preview-label>{item.brand} / {item.directions[0].label}</span><span>APERÇU LIVE</span></div><div class="preview-holder" data-preview-holder><iframe data-preview title={`Aperçu du concept ${item.brand}`} src={`/demos/${item.id}/${item.directions[0].id}`} loading="eager"></iframe></div><div class="preview-bottom"><span>Concept fictif · Création NeuralCraft</span><span>Faites défiler l’aperçu ↓</span></div></div>
+  </section>
+  <section id="parlons" class="config-contact"><div><span>ÇA VOUS PARLE ?</span><h2>Votre activité.<br/>Votre propre signature.</h2></div><button type="button" class="btn-premium-primary" data-open-contact data-inspiration-contact data-contact-context={`Inspiration : ${item.brand} / ${item.directions[0].label} / ${item.palettes[0].label}`}>Un site dans cet esprit ↗</button></section>
+  <nav class="other-universes" aria-label="Autres inspirations">{inspirations.filter(other=>other.id!==item.id).map(other=><a href={`/inspirations/${other.id}`}><span>Explorer aussi</span><b>{other.label} ↗</b></a>)}</nav>
+</div>
+<script>
+  import '../../scripts/configurator';
+</script>
+</Layout>

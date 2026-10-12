@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://neuralcraft.fr', // ← adapte à ton vrai domaine
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !new URL(page).pathname.startsWith("/demos/") })],
   vite: {
     plugins: [tailwindcss()]
   }

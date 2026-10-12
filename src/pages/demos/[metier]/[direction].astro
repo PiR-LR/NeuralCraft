@@ -1,0 +1,64 @@
+---
+import { inspirations, photo, grainGallery } from '../../../data/inspirations';
+import '../../../styles/demo.css';
+import '../../../styles/accord.css';
+import AccordDemo from '../../../components/inspirations/AccordDemo.astro';
+import DemoHeader from '../../../components/inspirations/DemoHeader.astro';
+import ScrollRuler from '../../../components/inspirations/ScrollRuler.astro';
+import PreviewBar from '../../../components/inspirations/PreviewBar.astro';
+export function getStaticPaths() {
+  return inspirations.flatMap(item => item.directions.map((direction, variant) => ({params:{metier:item.id,direction:direction.id},props:{item,direction,variant}})));
+}
+const { item, direction, variant } = Astro.props;
+const palette = item.palettes[0];
+---
+<!doctype html>
+<html lang="fr" style={`--paper:${palette.bg};--ink:${palette.ink};--accent:${palette.accent};--accent-ink:${palette.accentInk}`}>
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{item.brand} — {direction.label} · Concept NeuralCraft</title>
+  <meta name="robots" content="noindex, follow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <script is:inline define:vars={{palettes:item.palettes}}>
+    const applyPalette = (id) => {const p=palettes.find(p=>p.id===id)||palettes[0]; document.documentElement.dataset.palette=p.id; for(const [key,value] of Object.entries({paper:p.bg,ink:p.ink,accent:p.accent,'accent-ink':p.accentInk})) document.documentElement.style.setProperty('--'+key,value);};
+    applyPalette(new URLSearchParams(location.search).get('palette'));
+    window.addEventListener('message', e=>{if(e.origin===location.origin && (e.source===parent || e.source===window) && e.data?.type==='neuralcraft:palette') applyPalette(e.data.palette);});
+  </script>
+</head>
+<body class={`${item.id} variant-${variant}`}>
+  <PreviewBar item={item} direction={direction}/>
+  {item.id === "comptable" ? <AccordDemo variant={variant} direction={direction}/> : <>
+  <DemoHeader metier={item.id} variant={variant} brand={item.brand}/>
+  <main>
+    <section class="hero" id="immersion-top">
+      <div class="hero-label"><span class="dot"></span>{item.label}<span class="edition">Édition 01 / 2026</span></div>
+      <div class="hero-copy"><h1><span>{item.headline[0]}</span><span>{item.headline[1]}</span></h1><div class="hero-bottom"><p>{item.note}</p><a class="round-link" href="#expertise" aria-label="Découvrir notre approche">↘</a></div></div>
+      {item.id==='comptable' && variant!==1 ? <div class="sculpture" aria-hidden="true"><div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div><div class="orbit o4"></div><span class="sculpture-caption">Changer de perspective.</span></div> : <figure class="hero-image"><img src={photo(item.image)} alt={item.imageAlt} fetchpriority="high"/><figcaption>{item.id==='menuisier'?'Le sur-mesure commence ici.':'Une autre façon de voir.'}<span>01 — 03</span></figcaption></figure>}
+      {item.id==='decorateur' && variant===0 && <img class="floating-detail" src={photo(item.secondary,700)} alt="Détail d’un intérieur aux matières naturelles"/>}
+      <div class="hero-index"><span>SCROLL POUR EXPLORER ↓</span><span>{item.tag}</span></div>
+    </section>
+    <section id="expertise" class="manifesto"><span class="eyebrow">01 / {item.id==='comptable'?'Notre conviction':'Notre regard'}</span><h2>{item.intro}</h2><div class="manifesto-end"><span class="star" aria-hidden="true">✳</span><p>{item.id==='comptable'?'Une relation simple. Des réponses concrètes. Et l’espace pour vous concentrer sur ce qui compte.':item.id==='menuisier'?'Nous aimons les lignes franches, les assemblages précis et les matériaux qui deviennent plus beaux avec le temps.':'Un intérieur réussi ne suit pas une formule. Il révèle la personnalité de celles et ceux qui l’habitent.'}</p></div></section>
+    {item.id==='menuisier' && <section class="grain-materials" aria-label="Matières et finitions"><div class="grain-material-intro"><span class="eyebrow">La matière, d’abord</span><h2>Chaque bois.<br/>Un caractère.</h2><p>Une teinte, un veinage, un toucher. Le projet commence par le choix de la matière.</p></div><div class="grain-samples">{[{name:'Chêne',note:'Clair & structuré',tone:'oak'},{name:'Noyer',note:'Profond & chaleureux',tone:'walnut'},{name:'Frêne',note:'Lumineux & vivant',tone:'ash'}].map(sample=><article class={`grain-sample sample-${sample.tone}`}><div class="grain-swatch" aria-hidden="true"></div><div><h3>{sample.name}</h3><span>{sample.note}</span></div></article>)}</div><p class="grain-samples-note">Illustrations de matières · les teintes varient selon chaque pièce de bois.</p></section>}
+    <section id="projets" class="project-section"><div class="section-heading"><span class="eyebrow">02 / {item.id==='comptable'?'Ce qui nous anime':'Fragments choisis'}</span><h2>{item.id==='comptable'?'Une longueur\nd’avance.':'La beauté\ndu quotidien.'}</h2></div>
+      <div class="project-grid">{item.projects.map((project,index)=><a class={`project project-${index}`} href="#contact"><div class="project-visual">{item.id==='comptable'?<div class={`graphic graphic-${index}`} aria-hidden="true"><span>{['↗','≈','◎'][index]}</span></div>:<img loading="lazy" src={photo(item.id==='menuisier'?grainGallery[index].image:index===1?item.secondary:item.image,1000)} alt={item.id==='menuisier'?grainGallery[index].alt:`${project} — inspiration d’aménagement`} style={`object-position:${index===2?'75%':'50%'} center`}/>}<span class="project-arrow">↗</span></div><div class="project-caption"><h3>{project}</h3><span>0{index+1}</span></div></a>)}</div>
+    </section>
+    <section class="services"><span class="eyebrow">03 / De l’idée au concret</span>{item.services.map((service,index)=><details open={index===0}><summary><span>0{index+1}</span><h3>{service}</h3><b>+</b></summary><p>{item.descriptions[index]}</p></details>)}</section>
+    <section id="contact" class="demo-contact"><span class="eyebrow">Et si on écrivait la suite ?</span><h2>{item.id==='comptable'?'Voyons plus loin.':item.id==='menuisier'?'Une idée prend forme.':'Votre prochain chapitre.'}</h2><a href={`/inspirations/${item.id}?direction=${direction.id}#parlons`} target="_top">Imaginer mon site avec NeuralCraft <span>↗</span></a><p>Cette entreprise est fictive. Ce concept illustre un site que NeuralCraft peut concevoir pour votre activité.</p></section>
+  </main>
+  <footer class="demo-footer"><span class="wordmark">{item.brand}</span><span>Concept de démonstration par NeuralCraft · 2026</span><a href="#">Retour en haut ↑</a></footer>
+  </>}
+  {item.id==='decorateur' && variant===1 && <ScrollRuler/>}
+  <script>
+    const conceptContact = document.querySelector<HTMLAnchorElement>('.demo-contact>a');
+    if (conceptContact) {
+      const target = new URL(conceptContact.href);
+      const selectedPalette = new URLSearchParams(location.search).get('palette');
+      if (selectedPalette) target.searchParams.set('palette', selectedPalette);
+      conceptContact.href = target.href;
+    }
+    import '../../../scripts/demo-motion';
+    import '../../../scripts/demo-headers';
+  </script>
+</body>
+</html>

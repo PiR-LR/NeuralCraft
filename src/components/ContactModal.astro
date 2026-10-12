@@ -185,6 +185,10 @@
 
     const openModal = (e?: Event) => {
       if (e) e.preventDefault();
+      const trigger = e?.currentTarget as HTMLElement | null;
+      const context = trigger?.dataset.contactContext;
+      const messageField = document.getElementById("contact-message") as HTMLTextAreaElement | null;
+      if (context && messageField) messageField.value = `${context}\n\nMon projet : `;
       modal.classList.remove("opacity-0", "pointer-events-none");
       modal.setAttribute("aria-hidden", "false");
       card.classList.remove("scale-95");

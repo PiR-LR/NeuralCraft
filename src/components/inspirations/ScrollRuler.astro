@@ -1,0 +1,16 @@
+---
+const sections=[{id:'immersion-top',label:'Nuance'},{id:'expertise',label:'Le studio'},{id:'projets',label:'Les projets'},{id:'contact',label:'Votre projet'}];
+---
+<nav class="scroll-ruler" data-scroll-ruler aria-label="Carte de la page">
+  <button class="ruler-toggle" type="button" data-ruler-toggle aria-expanded="false" aria-controls="ruler-map">Parcours</button>
+  <div id="ruler-map" class="ruler-map">
+    <div class="ruler-ticks" aria-hidden="true">{Array.from({length:101},(_,i)=><span class:list={['ruler-tick',{'is-major':i%5===0}]} data-tick={i}>{i%5===0&&<small>{i}</small>}<i></i></span>)}</div>
+    <div class="ruler-window" data-ruler-window aria-hidden="true"></div>
+    <div class="ruler-sections">{sections.map(section=><a href={`#${section.id}`} data-ruler-section={section.id}>{section.label}</a>)}</div>
+    <div class="ruler-progress" data-ruler-progress aria-hidden="true"><span data-ruler-percent>000%</span></div>
+    <input class="ruler-range" type="range" min="0" max="100" step="0.1" value="0" aria-label="Position dans la page, en pourcentage" data-ruler-range/>
+  </div>
+</nav>
+<script>
+  import '../../scripts/scroll-ruler';
+</script>

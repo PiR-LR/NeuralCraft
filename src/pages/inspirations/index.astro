@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AccordLogo from '../../components/inspirations/AccordLogo.astro';
+import { inspirations, photo } from '../../data/inspirations';
+import '../../styles/inspirations.css';
+---
+<Layout title="Inspirations — imaginez votre prochain site" description="Explorez trois univers de sites web imaginés par NeuralCraft. Changez d’ambiance, composez votre palette et projetez-vous dans votre futur site.">
+  <div class="inspirations-page">
+    <section class="inspiration-intro"><h1>Votre métier.<br/>Une autre <span class="inspiration-gradient">dimension.</span></h1><div class="intro-bottom"><p>Un cabinet, un atelier, un studio : une même activité peut prendre des visages très différents.<br/><strong>Explorez les ambiances, changez les couleurs et imaginez ce qui vous ressemble.</strong></p></div><div class="intro-line"></div></section>
+    <section id="univers" class="universe-list" aria-label="Les univers à explorer">{inspirations.map((item,index)=><a href={`/inspirations/${item.id}`} class={`universe-card card-${item.id}`}><div class="universe-meta"><span>0{index+1} / {item.label}</span><span>3 ambiances · {item.palettes.length} palettes</span></div><div class="universe-art" style={`--card-paper:${item.palettes[0].bg};--card-ink:${item.palettes[0].ink};--card-accent:${item.palettes[0].accent}`}>
+      {item.id==='comptable'?<><div class="mini-brand"><AccordLogo/></div><div class="accord-card-photo"><img src={photo(item.image,1000)} alt="Documents comptables et graphiques financiers" loading="lazy"/></div><h2>Votre société.<br/>Bien accompagnée.</h2><div class="mini-caption">Comptabilité · Fiscalité · Gestion sociale</div></>:<><img src={photo(item.image,1400)} alt={item.imageAlt} loading="lazy"/><div class="mini-brand">{item.brand}</div><h2>{item.id==='menuisier'?<>Le bois.<br/><i>Et vous.</i></>:<>Habiter<br/><i>autrement.</i></>}</h2><div class="mini-caption">{item.tag}<span>↗</span></div></>}
+    </div><div class="universe-description"><p>{item.intro}</p><span>Explorer cet univers <b>↗</b></span></div></a>)}</section>
+    <section class="inspiration-ending"><h2>Et pour <span class="inspiration-gradient">votre activité ?</span></h2><p>Ces entreprises sont fictives. Votre identité, vos besoins et vos ambitions donneront à votre site sa propre personnalité.</p><button data-open-contact>Imaginons la vôtre ↗</button></section>
+  </div>
+</Layout>
